@@ -124,7 +124,7 @@ if (!function_exists('envo_online_store_header_style')) :
                         -o-background-size:      cover;
                         background-size:         cover;
                     }
-            <?php endif; ?>	
+            <?php endif; ?>
             <?php
 // Has the text been hidden?
             if ('blank' === $header_text_color) :
@@ -135,12 +135,12 @@ if (!function_exists('envo_online_store_header_style')) :
                         clip: rect(1px, 1px, 1px, 1px);
                     }
             <?php elseif ('' !== $header_text_color) : ?>
-                    .site-title a, 
-                    .site-title, 
+                    .site-title a,
+                    .site-title,
                     .site-description {
                         color: #<?php echo esc_attr($header_text_color); ?>;
                     }
-            <?php endif; ?>	
+            <?php endif; ?>
             </style>
             <?php
         }
@@ -423,7 +423,7 @@ if (!function_exists('envo_online_store_generate_construct_footer')) :
             /* translators: %1$s: Envo Online Store theme name (do not translate) with envothemes.com URL */
             printf(esc_html__('Theme: %1$s', 'envo-online-store'), '<a href="' . esc_url('https://envothemes.com/free-envo-online-store/') . '">' . esc_html_x('Envo Online Store', 'Theme name, do not translate', 'envo-online-store') . '</a>');
             ?>
-        </div> 
+        </div>
         <?php
     }
 
@@ -436,6 +436,7 @@ if (!function_exists('envo_online_store_widget_date')) :
      * Returns date for widgets.
      */
     function envo_online_store_widget_date() {
+        return;
         ?>
         <span class="posted-date">
             <?php echo esc_html(get_the_date()); ?>
@@ -451,6 +452,7 @@ if (!function_exists('envo_online_store_widget_comments')) :
      * Returns date for widgets.
      */
     function envo_online_store_widget_comments() {
+        return;
         ?>
         <span class="comments-meta">
             <?php
@@ -513,7 +515,7 @@ if (!function_exists('envo_online_store_thumb_img')) :
         <?php } elseif (has_post_thumbnail()) { ?>
             <div class="news-thumb <?php echo esc_attr($col); ?>">
                 <?php the_post_thumbnail($img); ?>
-            </div><!-- .news-thumb -->	
+            </div><!-- .news-thumb -->
             <?php
         }
     }
@@ -542,11 +544,12 @@ endif;
 if (!function_exists('envo_online_store_author_meta')) :
 
     function envo_online_store_author_meta() {
+        return;
         global $post;
         $author_id = $post->post_author;
         ?>
         <span class="author-meta">
-            <span class="author-meta-by"><?php esc_html_e('By', 'envo-online-store'); ?></span>   
+            <span class="author-meta-by"><?php esc_html_e('By', 'envo-online-store'); ?></span>
             <?php echo esc_html( get_the_author_meta('display_name', $author_id) ); ?>
         </span>
         <?php
@@ -617,7 +620,7 @@ if (!function_exists('envo_online_store_header_title')) :
             yoast_breadcrumb('<p id="breadcrumbs" class="text-center">', '</p>');
         }
         echo '</div>';
-        //} 
+        //}
     }
 
 endif;
