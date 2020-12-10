@@ -414,15 +414,7 @@ if (!function_exists('envo_online_store_generate_construct_footer')) :
     function envo_online_store_generate_construct_footer() {
         ?>
         <div class="footer-credits-text text-center">
-            <?php
-            /* translators: %s: WordPress name with wordpress.org URL */
-            printf(esc_html__('Proudly powered by %s', 'envo-online-store'), '<a href="' . esc_url(__('https://wordpress.org/', 'envo-online-store')) . '">' . esc_html__('WordPress', 'envo-online-store') . '</a>');
-            ?>
-            <span class="sep"> | </span>
-            <?php
-            /* translators: %1$s: Envo Online Store theme name (do not translate) with envothemes.com URL */
-            printf(esc_html__('Theme: %1$s', 'envo-online-store'), '<a href="' . esc_url('https://envothemes.com/free-envo-online-store/') . '">' . esc_html_x('Envo Online Store', 'Theme name, do not translate', 'envo-online-store') . '</a>');
-            ?>
+            &copy; 2021 Bowthan
         </div>
         <?php
     }

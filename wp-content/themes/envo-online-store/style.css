@@ -107,15 +107,15 @@ img {
 }
 .sticky,
 .bypostauthor {}
-table { 
-    width: 100%; 
-    border-collapse: collapse; 
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
-th { 
-    font-weight: bold; 
+th {
+    font-weight: bold;
 }
-td, th { 
-    padding: 6px; 
+td, th {
+    padding: 6px;
 }
 .screen-reader-text {
     border: 0;
@@ -892,6 +892,7 @@ select {
 }
 .page-area {
     padding-top: 25px;
+    padding-bottom: 25px;
 }
 .widget {
     word-wrap: break-word;
@@ -1090,8 +1091,8 @@ nav.navigation.pagination .current {
 #content-footer-section .widget-title h3 {
     color: #fff;
 }
-#content-footer-section .posted-date, 
-#content-footer-section .comments-meta, 
+#content-footer-section .posted-date,
+#content-footer-section .comments-meta,
 #content-footer-section .comments-meta a {
     position: relative;
     color: #fff;
@@ -1104,7 +1105,8 @@ nav.navigation.pagination .current {
     clear: both;
 }
 .footer-credits-text {
-    padding: 20px 0;
+    font-size: 11px;
+    padding: 3px 0;
     color: #fff;
 }
 
@@ -1268,7 +1270,7 @@ a.comment-reply-link {
     font-size: 14px;
     line-height: 2.2em;
 }
-.btn-default, input[type="submit"], input#submit, button, a.comment-reply-link, .woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt { 
+.btn-default, input[type="submit"], input#submit, button, a.comment-reply-link, .woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt {
     box-shadow: none;
     transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
@@ -1499,7 +1501,7 @@ span.comments-meta i {
 .woocommerce .select2-container--default .select2-selection--single .select2-selection__rendered {
     line-height: 38px;
 }
-.woocommerce .select2-container .select2-selection--single, 
+.woocommerce .select2-container .select2-selection--single,
 .woocommerce .select2-container--default .select2-selection--single .select2-selection__arrow {
     height: 42px;
 }
@@ -1756,7 +1758,7 @@ p.woocommerce-mini-cart__buttons.buttons {
 .woocommerce ul.cart_list li img, .woocommerce ul.product_list_widget li img {
     width: 60px;
 }
-.woocommerce .widget_price_filter .ui-slider .ui-slider-range, 
+.woocommerce .widget_price_filter .ui-slider .ui-slider-range,
 .woocommerce .widget_price_filter .ui-slider .ui-slider-handle {
     background-color: #22c2ff;
 }
