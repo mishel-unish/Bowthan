@@ -1879,3 +1879,6 @@ nav.navigation.post-navigation {
     filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
     opacity: 1;
 }
+.photo-credit {
+    font-size: 11px;
+}
