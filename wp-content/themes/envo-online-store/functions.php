@@ -346,7 +346,7 @@ function envo_online_store_widgets_init() {
             array(
                 'name' => esc_html__('Footer Section', 'envo-online-store'),
                 'id' => 'envo-online-store-footer-area',
-                'before_widget' => '<div id="%1$s" class="widget %2$s col-md-3">',
+                'before_widget' => '<div id="%1$s" class="widget %2$s col-md-4">',
                 'after_widget' => '</div>',
                 'before_title' => '<div class="widget-title"><h3>',
                 'after_title' => '</h3></div>',

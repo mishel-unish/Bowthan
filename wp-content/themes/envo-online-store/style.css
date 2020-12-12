@@ -13,6 +13,11 @@ Tags: one-column, two-columns, full-width-template, right-sidebar, custom-backgr
 Text Domain: envo-online-store
 */
 
+/* all variables */
+:root {
+  --primary-color: #811787;
+}
+
 /* WordPress Core */
 .gallery-caption {
     font-weight: bold;
@@ -1881,4 +1886,21 @@ nav.navigation.post-navigation {
 }
 .photo-credit {
     font-size: 11px;
+}
+.bt-icon {
+    color: var(--primary-color);
+}
+.bt-footer-links {
+    /* display: inline-block; */
+    /* border-bottom: 2px solid hsla(0, 0%, 20%, 0.9); */
+    /* font-weight: 700; */
+    margin-top: 20px;
+}
+.bt-footer-links p {
+    margin: 0;
+}
+.bt-footer-links hr {
+    margin: 7px 0;
+    width: 50%;
+    border-top: 2px solid #555;
 }
