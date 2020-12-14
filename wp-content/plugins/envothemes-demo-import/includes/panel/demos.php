@@ -97,7 +97,7 @@ if (!class_exists('EnvoThemes_Demos')) {
                 ));
             }
             
-            wp_enqueue_style('envo-notices', plugins_url('/assets/css/notify.css', __FILE__));
+            //wp_enqueue_style('envo-notices', plugins_url('/assets/css/notify.css', __FILE__));
         }
 
         /**
@@ -173,7 +173,7 @@ if (!class_exists('EnvoThemes_Demos')) {
                         ),
                     ),
                 );
-            } elseif ('Envo Online Store' == $theme->name || 'envo-online-store' == $theme->template) {
+            } elseif ('Envo Online Store' == $theme->name || 'envo-online-store' == $theme->template || 'Envo Marketplace' == $theme->name || 'envo-marketplace' == $theme->template) {
                 $data = array(
                     $theme->template => array(
                         'demo_name' => $theme->name,

@@ -2,9 +2,9 @@
 Contributors: EnvoThemes
 Tags: one-column, two-columns, full-width-template, right-sidebar, custom-background, custom-menu, custom-header, editor-style, featured-images, translation-ready, custom-logo, threaded-comments, footer-widgets, rtl-language-support, blog, e-commerce
 Requires at least: 4.4
-Tested up to: 5.5.3
+Tested up to: 5.6
 Requires PHP: 5.2.4
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -86,6 +86,10 @@ All other resources and theme elements are licensed under the [GNU GPL](http://w
 Envo Online Store is distributed under the terms of the GNU GPL (http://www.gnu.org/licenses/gpl-3.0.txt), version 3 or later.
 
 == Changelog ==
+
+= Version 1.0.6 =
+* Added compatibility to WP 5.6
+* Fixed missing floating icons
 
 = Version 1.0.5 =
 * Fixed floating account box text visibility

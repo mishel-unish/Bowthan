@@ -43,10 +43,9 @@
     });
     
     $(window).scroll(function () {
-        var topmenu = $('#top-navigation').outerHeight();
         var header = $('.site-header').outerHeight();
         var mainmenu = $('.main-menu').outerHeight();
-        if ($(document).scrollTop() > (topmenu + header + mainmenu + 150)) {
+        if ($(document).scrollTop() > (header + mainmenu + 100)) {
             $('.header-cart').addClass('float-cart');
             $('.header-my-account').addClass('float-login');
             $('.header-wishlist').addClass('float-wishlist');

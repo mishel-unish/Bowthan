@@ -2,7 +2,7 @@
 /**
  * Plugin Name:	EnvoThemes Demo Import
  * Description:	Import EnvoThemes official themes demo content, widgets and theme settings with just one click.
- * Version: 1.0.17
+ * Version: 1.1.0
  * Author: EnvoThemes
  * Author URI: https://envothemes.com
  * Text Domain: envothemes-demo-import
@@ -95,13 +95,21 @@ final class EnvoThemes_Demo_Import {
 
         add_action('init', array($this, 'load_plugin_textdomain'));
         
+        // Demos scripts
+        add_action('admin_enqueue_scripts', array($this, 'scripts'));
+        
         $theme = wp_get_theme();
-        if ('Envo eCommerce' == $theme->name || 'envo-ecommerce' == $theme->template || 'Envo Storefront' == $theme->name || 'envo-storefront' == $theme->template || 'Envo Shop' == $theme->name || 'envo-shop' == $theme->template || 'Envo Online Store' == $theme->name || 'envo-online-store' == $theme->template) {
+        if ('Envo eCommerce' == $theme->name || 'envo-ecommerce' == $theme->template || 'Envo Storefront' == $theme->name || 'envo-storefront' == $theme->template || 'Envo Shop' == $theme->name || 'envo-shop' == $theme->template || 'Envo Online Store' == $theme->name || 'envo-online-store' == $theme->template || 'Envo Marketplace' == $theme->name || 'envo-marketplace' == $theme->template) {
             require_once( ENVO_PATH . 'includes/panel/demos.php' );
             require_once( ENVO_PATH . 'includes/wizard/wizard.php' );
-            require_once( ENVO_PATH . 'includes/notify/notify.php' );
         }
+        require_once( ENVO_PATH . 'includes/notify/notify.php' );
     }
+    
+    public static function scripts() {
+            
+            wp_enqueue_style('envo-notices', plugins_url('includes/panel/assets/css/notify.css', __FILE__));
+        }
 
     /**
      * Main EnvoThemes_Demo_Import Instance

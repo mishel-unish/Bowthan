@@ -1,8 +1,8 @@
 === EnvoThemes Demo Import ===
 Contributors: EnvoThemes
 Requires at least: 4.5
-Tested up to: 5.5
-Stable tag: 1.0.17
+Tested up to: 5.6
+Stable tag: 1.1.0
 License: GPLv2 or later
 Requires PHP: 5.4.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -13,6 +13,7 @@ Tags: WordPress, import, content, demo, data, widgets, settings, theme options
 Import EnvoThemes official themes demo content, widgets and theme settings with just one click.
 
 == Supported Themes ==
+*   [Envo Marketplace](https://envothemes.com/free-envo-marketplace/)
 *   [Envo Online Store](https://envothemes.com/free-envo-online-store/)
 *   [Envo Shop](https://wordpress.org/themes/envo-shop/)
 *   [Envo Storefront](https://wordpress.org/themes/envo-storefront/)
@@ -37,6 +38,10 @@ License: GPL version 2 or later
 Source: http://wordpress.org/extend/plugins/wordpress-importer/
 
 == Changelog ==
+
+= 1.1.0 =
+* Added support for new theme
+* Added compatibility for WP 5.6
 
 = 1.0.17 =
 * Fixed code

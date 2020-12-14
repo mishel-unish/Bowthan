@@ -147,7 +147,7 @@ function envothemes_pro_notice() {
     $daysinseconds = 86400; // 1 Day in seconds.
 
     if (time() - $activation_time > $daysinseconds) {
-        if (defined('ENVO_ECOMMERCE_PRO_CURRENT_VERSION') || defined('ENVO_STOREFRONT_PRO_CURRENT_VERSION') || defined('ENVO_SHOP_PRO_CURRENT_VERSION') || defined('ENVO_ONLINE_STORE_PRO_CURRENT_VERSION')) {
+        if (defined('ENVO_ECOMMERCE_PRO_CURRENT_VERSION') || defined('ENVO_STOREFRONT_PRO_CURRENT_VERSION') || defined('ENVO_SHOP_PRO_CURRENT_VERSION') || defined('ENVO_ONLINE_STORE_PRO_CURRENT_VERSION') || defined('ENVO_MARKETPLACE_PRO_CURRENT_VERSION')) {
             return;
         }
         add_action('admin_notices', 'envothemes_pro_notice_message');
@@ -218,38 +218,38 @@ function envothemes_pro_dismiss() {
 /**
  * Envo Shop notice
  */
-function envothemes_shop_notice() {
+function envothemes_marketplace_notice() {
 
-    envothemes_online_store_dismiss();
+    envothemes_marketplace_dismiss();
     
     $theme = wp_get_theme();
-    $activation_time = get_site_option('envothemes_active_online_store_time');
+    $activation_time = get_site_option('envothemes_active_marketplace_time');
 
     if (!$activation_time) {
-        add_site_option('envothemes_active_online_store_time', time());
+        add_site_option('envothemes_active_marketplace_time', time());
     }
 
     $daysinseconds = 300; // 1 Day in seconds.
 
     if (time() - $activation_time > $daysinseconds) {
-        if (defined('ENVO_ECOMMERCE_PRO_CURRENT_VERSION') || defined('ENVO_STOREFRONT_PRO_CURRENT_VERSION') || defined('ENVO_SHOP_PRO_CURRENT_VERSION') || defined('ENVO_ONLINE_STORE_PRO_CURRENT_VERSION')) {
+        if (defined('ENVO_ECOMMERCE_PRO_CURRENT_VERSION') || defined('ENVO_STOREFRONT_PRO_CURRENT_VERSION') || defined('ENVO_SHOP_PRO_CURRENT_VERSION') || defined('ENVO_ONLINE_STORE_PRO_CURRENT_VERSION') || defined('ENVO_MARKETPLACE_PRO_CURRENT_VERSION')) {
             return;
         }
-        if ('Envo eCommerce' == $theme->name || 'envo-ecommerce' == $theme->template || 'Envo Storefront' == $theme->name || 'envo-storefront' == $theme->template || 'Envo Shop' == $theme->name || 'envo-shop' == $theme->template ) {
-            add_action('admin_notices', 'envothemes_online_store_notice_message');
+        if ( 'Envo Marketplace' != $theme->name || 'envo-marketplace' != $theme->template ) {
+            add_action('admin_notices', 'envothemes_marketplace_notice_message');
         }
     }
 }
 
-add_action('admin_init', 'envothemes_shop_notice');
+add_action('admin_init', 'envothemes_marketplace_notice');
 
 /**
  * For shop notice 
  */
-function envothemes_online_store_notice_message() {
+function envothemes_marketplace_notice_message() {
     $scheme = (parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY)) ? '&' : '?';
-    $url = $_SERVER['REQUEST_URI'] . $scheme . 'envothemes_online_store_dismiss=yes';
-    $dismiss_url = wp_nonce_url($url, 'envo-online-store-nonce');
+    $url = $_SERVER['REQUEST_URI'] . $scheme . 'envothemes_marketplace_dismiss=yes';
+    $dismiss_url = wp_nonce_url($url, 'envo-marketplace-nonce');
     $theme = wp_get_theme();
     $themetemplate = $theme->template;
     $themename = $theme->name;
@@ -257,21 +257,21 @@ function envothemes_online_store_notice_message() {
 
     <div class="envo-review-notice envo-shop-notice">
         <div class="envo-review-thumbnail">
-            <img src="<?php echo esc_url(ENVO_URL) . 'img/envo-online-store-logo.png'; ?>" alt="">
+            <img src="<?php echo esc_url(ENVO_URL) . 'img/envo-marketplace.png'; ?>" alt="">
         </div>
         <div class="envo-review-text">
-            <h3><?php esc_html_e('New Awesome FREE WooCommerce Theme', 'envothemes-demo-import') ?></h3>
+            <h3><?php esc_html_e('New Awesome FREE WooCommerce Theme - Envo Marketplace', 'envothemes-demo-import') ?></h3>
             <p>
                 <?php
                 echo sprintf(
-                        esc_html__('%1$s - new free WooCommerce theme form EnvoThemes. Check out theme %2$s, that can be imported with simple click.', 'envothemes-demo-import'),
-                        '<a href="https://envothemes.com/free-envo-online-store/" target="_blank">Envo Online Store</a>',
-                        '<a href="https://envothemes.com/envo-online-store/" target="_blank">Demo</a>')
+                        esc_html__('%1$s - new free WooCommerce theme form EnvoThemes. Check out theme %2$s, that can be imported for FREE with simple click.', 'envothemes-demo-import'),
+                        '<a href="https://envothemes.com/free-envo-marketplace/" target="_blank">Envo Marketplace</a>',
+                        '<a href="https://envothemes.com/envo-marketplace/" target="_blank">Demo</a>')
                 ?>
             </p>
             <ul class="envo-review-ul">
                 <li class="show-mor-message">
-                    <a href="https://envothemes.com/free-envo-online-store/" target="_blank">
+                    <a href="https://envothemes.com/free-envo-marketplace/" target="_blank">
                         <span class="dashicons dashicons-external"></span>
                         <?php esc_html_e('Show me more', 'envothemes-demo-import') ?>
                     </a>
@@ -292,17 +292,17 @@ function envothemes_online_store_notice_message() {
 /**
  * For shop Dismiss! 
  */
-function envothemes_online_store_dismiss() {
+function envothemes_marketplace_dismiss() {
 
     if (!is_admin() ||
             !current_user_can('manage_options') ||
             !isset($_GET['_wpnonce']) ||
-            !wp_verify_nonce(sanitize_key(wp_unslash($_GET['_wpnonce'])), 'envo-online-store-nonce') ||
-            !isset($_GET['envothemes_online_store_dismiss'])) {
+            !wp_verify_nonce(sanitize_key(wp_unslash($_GET['_wpnonce'])), 'envo-marketplace-nonce') ||
+            !isset($_GET['envothemes_marketplace_dismiss'])) {
 
         return;
     }
     $daysinseconds = 1009600; // 14 Days in seconds (1209600).
     $newtime = time() + $daysinseconds;
-    update_site_option('envothemes_active_online_store_time', $newtime);
+    update_site_option('envothemes_active_marketplace_time', $newtime);
 }

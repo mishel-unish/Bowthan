@@ -2,8 +2,8 @@
 Contributors: EnvoThemes
 Tags: elementor, woocommerce, templates, woo, widgets, drag-and-drop, e-commerce, elements, landing page, elementor widget, woocommerce elementor, product
 Requires at least: 4.4
-Tested up to: 5.5.1
-Stable tag: 1.2.4
+Tested up to: 5.6
+Stable tag: 1.2.5
 Requires PHP: 5.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -20,7 +20,7 @@ Envo's Elementor Templates & Widgets for WooCommerce is a WooCommerce addon for 
 * More comming soon
 
 You can see the demo pages here : [Live Demo](https://envothemes.com/elementor-templates-for-woocommerce/)
-The product design in the demo is loaded from free WooCommerce theme: Envo Storefront(https://wordpress.org/themes/envo-storefront/)
+The product design in the demo is loaded from free WooCommerce theme: [Envo Storefront](https://wordpress.org/themes/envo-storefront/)
 
 == Elementor Widgets for WooCommerce ==
 * WooCommerce Carousel Widget - WooCommerce products in carousel mode
@@ -50,6 +50,7 @@ The product design in the demo is loaded from free WooCommerce theme: Envo Store
 == Supported Themes ==
 The following themes are tested with Elementor and WooCommerce and are compatible without major issues:
 
+* [Envo Marketplace](https://envothemes.com/free-envo-marketplace/) - by EnvoThemes
 * [Envo Online Store](https://envothemes.com/free-envo-online-store/) - by EnvoThemes
 * [Envo Shop](https://wordpress.org/themes/envo-shop/) - by EnvoThemes
 * [Envo Storefront](https://wordpress.org/themes/envo-storefront/) - by EnvoThemes
@@ -125,6 +126,11 @@ No, Elementor PRO or any other PRO addon is not required.
 10. WooCommerce Elementor Widgets
 
 == Changelog ==
+
+= Version: 1.2.5 =
+* Tested with WP 5.6
+* Tested with WooCommerce 4.8
+* Added support for new theme
 
 = Version: 1.2.4 =
 * Added 3 new PRO FAQ templates

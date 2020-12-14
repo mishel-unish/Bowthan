@@ -2,7 +2,7 @@
 /**
  * The current version of the theme.
  */
-define('ENVO_ONLINE_STORE_VERSION', '1.0.4');
+define('ENVO_ONLINE_STORE_VERSION', '1.0.6');
 
 add_action('after_setup_theme', 'envo_online_store_setup');
 
@@ -124,7 +124,7 @@ if (!function_exists('envo_online_store_header_style')) :
                         -o-background-size:      cover;
                         background-size:         cover;
                     }
-            <?php endif; ?>
+            <?php endif; ?>	
             <?php
 // Has the text been hidden?
             if ('blank' === $header_text_color) :
@@ -135,12 +135,12 @@ if (!function_exists('envo_online_store_header_style')) :
                         clip: rect(1px, 1px, 1px, 1px);
                     }
             <?php elseif ('' !== $header_text_color) : ?>
-                    .site-title a,
-                    .site-title,
+                    .site-title a, 
+                    .site-title, 
                     .site-description {
                         color: #<?php echo esc_attr($header_text_color); ?>;
                     }
-            <?php endif; ?>
+            <?php endif; ?>	
             </style>
             <?php
         }
@@ -346,7 +346,7 @@ function envo_online_store_widgets_init() {
             array(
                 'name' => esc_html__('Footer Section', 'envo-online-store'),
                 'id' => 'envo-online-store-footer-area',
-                'before_widget' => '<div id="%1$s" class="widget %2$s col-md-4">',
+                'before_widget' => '<div id="%1$s" class="widget %2$s col-md-3">',
                 'after_widget' => '</div>',
                 'before_title' => '<div class="widget-title"><h3>',
                 'after_title' => '</h3></div>',
@@ -414,8 +414,16 @@ if (!function_exists('envo_online_store_generate_construct_footer')) :
     function envo_online_store_generate_construct_footer() {
         ?>
         <div class="footer-credits-text text-center">
-            &copy; 2021 Bowthan
-        </div>
+            <?php
+            /* translators: %s: WordPress name with wordpress.org URL */
+            printf(esc_html__('Proudly powered by %s', 'envo-online-store'), '<a href="' . esc_url(__('https://wordpress.org/', 'envo-online-store')) . '">' . esc_html__('WordPress', 'envo-online-store') . '</a>');
+            ?>
+            <span class="sep"> | </span>
+            <?php
+            /* translators: %1$s: Envo Online Store theme name (do not translate) with envothemes.com URL */
+            printf(esc_html__('Theme: %1$s', 'envo-online-store'), '<a href="' . esc_url('https://envothemes.com/free-envo-online-store/') . '">' . esc_html_x('Envo Online Store', 'Theme name, do not translate', 'envo-online-store') . '</a>');
+            ?>
+        </div> 
         <?php
     }
 
@@ -428,7 +436,6 @@ if (!function_exists('envo_online_store_widget_date')) :
      * Returns date for widgets.
      */
     function envo_online_store_widget_date() {
-        return;
         ?>
         <span class="posted-date">
             <?php echo esc_html(get_the_date()); ?>
@@ -444,7 +451,6 @@ if (!function_exists('envo_online_store_widget_comments')) :
      * Returns date for widgets.
      */
     function envo_online_store_widget_comments() {
-        return;
         ?>
         <span class="comments-meta">
             <?php
@@ -507,7 +513,7 @@ if (!function_exists('envo_online_store_thumb_img')) :
         <?php } elseif (has_post_thumbnail()) { ?>
             <div class="news-thumb <?php echo esc_attr($col); ?>">
                 <?php the_post_thumbnail($img); ?>
-            </div><!-- .news-thumb -->
+            </div><!-- .news-thumb -->	
             <?php
         }
     }
@@ -536,12 +542,11 @@ endif;
 if (!function_exists('envo_online_store_author_meta')) :
 
     function envo_online_store_author_meta() {
-        return;
         global $post;
         $author_id = $post->post_author;
         ?>
         <span class="author-meta">
-            <span class="author-meta-by"><?php esc_html_e('By', 'envo-online-store'); ?></span>
+            <span class="author-meta-by"><?php esc_html_e('By', 'envo-online-store'); ?></span>   
             <?php echo esc_html( get_the_author_meta('display_name', $author_id) ); ?>
         </span>
         <?php
@@ -612,7 +617,7 @@ if (!function_exists('envo_online_store_header_title')) :
             yoast_breadcrumb('<p id="breadcrumbs" class="text-center">', '</p>');
         }
         echo '</div>';
-        //}
+        //} 
     }
 
 endif;

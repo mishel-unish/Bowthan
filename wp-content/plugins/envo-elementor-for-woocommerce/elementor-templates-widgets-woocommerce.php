@@ -4,19 +4,19 @@
  * Plugin Name: Envo's Elementor Templates & Widgets for WooCommerce
  * Description: Elementor templates library and widgets for WooCommerce.
  * Plugin URI: 	https://envothemes.com/elementor-templates-for-woocommerce/
- * Version: 	1.2.4
+ * Version: 	1.2.5
  * Author: 	EnvoThemes
  * Author URI: 	https://envothemes.com/
  * License:  	GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: etww
  * Domain Path: /languages
- * WC tested up to: 4.6.0
+ * WC tested up to: 4.8.0
  */
 if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
 
-define('ETWW_VERSION', '1.2.3');
+define('ETWW_VERSION', '1.2.5');
 define('ETWW_ROOT', __FILE__);
 define('ETWW_URL', plugins_url('/', ETWW_ROOT));
 define('ETWW_PATH', plugin_dir_path(ETWW_ROOT));
