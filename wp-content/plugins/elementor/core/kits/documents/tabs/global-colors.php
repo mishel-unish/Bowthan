@@ -64,7 +64,7 @@ class Global_Colors extends Tab_Base {
 			[
 				'_id' => 'primary',
 				'title' => __( 'Primary', 'elementor' ),
-				'color' => '#811787',
+				'color' => '#6EC1E4',
 			],
 			[
 				'_id' => 'secondary',

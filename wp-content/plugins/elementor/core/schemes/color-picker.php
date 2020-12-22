@@ -42,7 +42,7 @@ class Color_Picker extends Base {
 	 */
 	public function get_default_scheme() {
 		return [
-			1 => '#811787',
+			1 => '#6ec1e4',
 			2 => '#54595f',
 			3 => '#7a7a7a',
 			4 => '#61ce70',

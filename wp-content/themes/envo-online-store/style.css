@@ -16,6 +16,7 @@ Text Domain: envo-online-store
 /* all variables */
 :root {
   --primary-color: #811787;
+  --primary-dark: #750B7B;
 }
 
 /* WordPress Core */
@@ -1905,4 +1906,52 @@ nav.navigation.post-navigation {
     margin: 7px 0;
     width: 50%;
     border-top: 2px solid #555;
+}
+.bt-heading {
+    color: var(--primary-color);
+}
+.mt-0 {
+    margin-top: 0 !important;
+}
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+.ml-0 {
+    margin-left: 0 !important;
+}
+.mr-0 {
+    margin-right: 0 !important;
+}
+.my-0 {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+.mx-0 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.pt-0 {
+    padding-top: 0 !important;
+}
+.pb-0 {
+    padding-bottom: 0 !important;
+}
+.pl-0 {
+    padding-left: 0 !important;
+}
+.pr-0 {
+    padding-right: 0 !important;
+}
+.py-0 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+.px-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.btn-primary {
+    color: #ffffff !important;
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-dark) !important;
 }
