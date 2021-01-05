@@ -412,7 +412,11 @@ if (!function_exists('envo_online_store_generate_construct_footer')) :
     add_action('envo_online_store_generate_footer', 'envo_online_store_generate_construct_footer');
 
     function envo_online_store_generate_construct_footer() {
-        ?>
+		  ?>
+
+        <div class="footer-address-text text-center">
+            <i class="fa fa-map-marker bt-icon" aria-hidden="true"></i> 146 Ahmedbag, Bashabo, Sabujbag, Dhaka-1214, Bangladesh.
+        </div>
         <div class="footer-credits-text text-center">
             &copy; 2021 Bowthan
         </div>

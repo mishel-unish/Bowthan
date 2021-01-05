@@ -1170,9 +1170,15 @@ nav.navigation.pagination .current {
 	background-color: #000;
 	clear: both;
 }
+.footer-address-text {
+	font-size: 12px;
+	padding: 3px 5px;
+	color: #fff;
+	background-color: #111111;
+}
 .footer-credits-text {
 	font-size: 11px;
-	padding: 3px 0;
+	padding: 3px 5px;
 	color: #fff;
 }
 
