@@ -17,8 +17,8 @@ Text Domain: envo-online-store
 :root {
 	/* --primary-color: #811787; */
 	/* --primary-dark: #750B7B; */
-	--primary-color: #f12184;
-	--primary-dark: #d40467;
+	--primary-color: #23aac4;
+	--primary-dark: #0a91ab;
 }
 
 /* WordPress Core */
@@ -1024,6 +1024,7 @@ h1.site-title,
 h1.site-title a,
 .site-title a {
 	color: #fff;
+	font-size: 29px;
 }
 .site-description {
 	font-size: 14px;
@@ -1032,6 +1033,7 @@ h1.site-title a,
 	position: relative;
 	display: inline-block;
 	color: #fff;
+	top: -5px;
 }
 .site-branding-logo a {
 	border: none;
@@ -1055,22 +1057,24 @@ h1.site-title a,
 .mobile-heading .site-branding-logo {
 	margin: 0;
 	text-align: left;
-	padding-right: 15px;
+	padding: 5px 15px 5px 0;
 	max-height: 60px;
 }
 .mobile-heading .site-branding-logo img {
-	max-height: 60px;
+	max-height: 50px;
 }
 .mobile-heading .site-branding-logo,
 .mobile-heading .site-branding-text {
 	text-align: left;
 	float: left;
 	margin-bottom: 0;
+	height: 60px;
 }
 .mobile-heading h1.site-title,
 .mobile-heading .site-title {
-	line-height: 26px;
+	line-height: 29px;
 	margin-top: 5px;
+	font-size: 29px;
 }
 .navbar {
 	margin-bottom: 0;
