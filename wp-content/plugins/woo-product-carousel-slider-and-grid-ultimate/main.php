@@ -159,7 +159,7 @@ Final class Woocmmerce_Product_carousel_slider_ultimate
 
     public function template_enqueue_file () {
         wp_register_style('wcpcsu-animate', WCPCSU_URL . 'assets/css/animate.css');
-        wp_register_style('wcpcsu-line-awesome', WCPCSU_URL . 'assets/css/line-awesome.css');
+      //   wp_register_style('wcpcsu-line-awesome', WCPCSU_URL . 'assets/css/line-awesome.css');
         wp_register_style('wcpcsu-owl-carousel', WCPCSU_URL . 'assets/css/owl.carousel.css');
         wp_register_style('wcpcsu-simple-line-icon', WCPCSU_URL . 'assets/css/simple-line-icons.css');
         wp_register_style('wcpcsu-theme', WCPCSU_URL . 'assets/css/theme.css');
@@ -203,4 +203,3 @@ function wpcsu_image_cropping($attachmentId, $width, $height, $crop = true, $qua
 
     return $resizer->resize($width, $height, $crop, $quality);
 }
-
