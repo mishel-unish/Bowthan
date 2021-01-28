@@ -2430,3 +2430,31 @@ table th[class*="col-"] {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	margin: 10px;
 }
+.atw_item.atw--single_item {
+	padding: 10px;
+	margin-bottom: 10px;
+	position: relative;
+	border: 1px solid #e4e4ed;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: box-shadow 0.3s;
+}
+.atw_item.atw--single_item:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.atw_item .atw_item_bottom {
+	position: absolute;
+	bottom: 20px;
+	z-index: 19;
+	width: calc(100% - 20px);
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.atw_item:hover .atw_item_top img {
+	filter: brightness(50%);
+}
+#atw_style2 .atw_single_slide .atw_item:hover .atw_item_top .atw_overlay_content {
+	bottom: 150px;
+}
+#atw_style2 .atw_single_slide .atw_item .atw_item_bottom {
+	padding: 10px 0;
+}
