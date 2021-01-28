@@ -1979,7 +1979,7 @@ nav.navigation.post-navigation {
 
 [data-tooltip]:before {
 	position: absolute;
-	bottom: 100%;
+	top: 100%;
 	left: 50%;
 	transform: translate(-50%, 0);
 	margin-bottom: 5px;
