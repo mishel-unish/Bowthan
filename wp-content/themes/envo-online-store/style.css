@@ -2456,3 +2456,11 @@ table th[class*="col-"] {
 #atw_style2 .atw_single_slide .atw_item .atw_item_bottom {
 	padding: 10px 0;
 }
+
+.sp-testimonial-free-section .sp-testimonial-free-item {
+	padding: 8px;
+}
+
+div.sp-testimonial-free-section .slick-list {
+	margin-right: 0;
+}
