@@ -95,7 +95,7 @@ if( !class_exists( 'SP_TFREE_MCE_Shortcode_list' ) ) {
 		public function tfree_list_ajax() {
 			// check for nonce
 			check_ajax_referer( 'sp-mce-nonce', 'security' );
-			$posts = $this->posts( 'sp_tfree_shortcodes' ); // change 'post' if you need posts list
+			$posts = $this->posts( 'spt_shortcodes' ); // change 'post' if you need posts list
 			return $posts;
 		}
 

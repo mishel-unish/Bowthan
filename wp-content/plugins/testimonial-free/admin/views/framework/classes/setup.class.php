@@ -261,11 +261,11 @@ if ( ! class_exists( 'SPFTESTIMONIAL' ) ) {
 					}
 
 					if ( ! empty( $field['accordions'] ) ) {
-						  self::set_used_fields( array( 'fields' => $field['accordions'] ) );
+						self::set_used_fields( array( 'fields' => $field['accordions'] ) );
 					}
 
 					if ( ! empty( $field['type'] ) ) {
-						  self::$fields[ $field['type'] ] = $field;
+						self::$fields[ $field['type'] ] = $field;
 					}
 				}
 			}
@@ -287,23 +287,25 @@ if ( ! class_exists( 'SPFTESTIMONIAL' ) ) {
 			wp_enqueue_script( 'wp-color-picker' );
 
 			$screen = get_current_screen();
-			if ( $screen->post_type == 'spt_testimonial' || $screen->post_type == 'sp_tfree_shortcodes' ) {
+			if ( $screen->post_type == 'spt_testimonial_form' || $screen->post_type == 'spt_testimonial' || $screen->post_type == 'spt_shortcodes' ) {
 				wp_enqueue_style( 'tfree-font-awesome', SP_TFREE_URL . 'public/assets/css/font-awesome.min.css', array(), SP_TFREE_VERSION );
 
 				// framework core styles
-				wp_enqueue_style( 'spftestimonial', SPFTESTIMONIAL::include_plugin_url( 'assets/css/spftestimonial' . $min . '.css' ), array(), '1.0.0', 'all' );
+				wp_enqueue_style( 'spftestimonial', self::include_plugin_url( 'assets/css/spftestimonial' . $min . '.css' ), array(), '1.0.0', 'all' );
 
 				// rtl styles
 				if ( is_rtl() ) {
-					wp_enqueue_style( 'spftestimonial-rtl', SPFTESTIMONIAL::include_plugin_url( 'assets/css/spftestimonial-rtl' . $min . '.css' ), array(), '1.0.0', 'all' );
+					wp_enqueue_style( 'spftestimonial-rtl', self::include_plugin_url( 'assets/css/spftestimonial-rtl' . $min . '.css' ), array(), '1.0.0', 'all' );
 				}
 
 				// framework core scripts
-				wp_enqueue_script( 'spftestimonial-plugins', SPFTESTIMONIAL::include_plugin_url( 'assets/js/spftestimonial-plugins' . $min . '.js' ), array(), '1.0.0', true );
-				wp_enqueue_script( 'spftestimonial', SPFTESTIMONIAL::include_plugin_url( 'assets/js/spftestimonial' . $min . '.js' ), array( 'spftestimonial-plugins' ), '1.0.0', true );
+				wp_enqueue_script( 'spftestimonial-plugins', self::include_plugin_url( 'assets/js/spftestimonial-plugins' . $min . '.js' ), array(), '1.0.0', true );
+				wp_enqueue_script( 'spftestimonial', self::include_plugin_url( 'assets/js/spftestimonial' . $min . '.js' ), array( 'spftestimonial-plugins' ), '1.0.0', true );
 
 				wp_localize_script(
-					'spftestimonial', 'spftestimonial_vars', array(
+					'spftestimonial',
+					'spftestimonial_vars',
+					array(
 						'color_palette' => apply_filters( 'spftestimonial_color_palette', array() ),
 						'i18n'          => array(
 							// global localize

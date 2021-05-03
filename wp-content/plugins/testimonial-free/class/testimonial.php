@@ -37,6 +37,26 @@ class SP_TFREE_Testimonial {
 	 */
 	public function __construct() {
 		add_filter( 'init', array( $this, 'register_post_type' ) );
+		add_filter( 'admin_menu', array( $this, 'sptfree_conditional_redirect_post_new' ) );
+		add_action( 'admin_head', array( $this, 'spt_testimonial_form_admin_head' ) );
+	}
+	/**
+	 * Testimonial form publish button disabled.
+	 *
+	 * @since 1.0
+	 */
+	public function spt_testimonial_form_admin_head() {
+		$screen = get_current_screen();
+		if ( $screen->post_type == 'spt_testimonial_form' ) {
+			?><script>
+			jQuery(document).ready(function(){
+				jQuery("#submitdiv #publish, #submitdiv, #submitdiv #save-post").attr("disabled", true).css("opacity", "0.8");
+				// jQuery("#submitdiv:has(#publish)").css({"display":"none"});
+				// jQuery("#postimagediv").append('<input name="save" type="submit" class="button button-primary button-large" accesskey="p" value="publish (Pro)">');
+			});</script>
+			<?php
+		}
+
 	}
 
 	/**
@@ -49,25 +69,27 @@ class SP_TFREE_Testimonial {
 		if ( post_type_exists( 'spt_testimonial' ) ) {
 			return;
 		}
-
-		$labels = apply_filters(
+		$settings      = get_option( 'sp_testimonial_pro_options' );
+		$singular_name = isset( $settings['tpro_singular_name'] ) ? $settings['tpro_singular_name'] : 'Testimonial';
+		$plural_name   = isset( $settings['tpro_plural_name'] ) ? $settings['tpro_plural_name'] : 'Testimonials';
+		$labels        = apply_filters(
 			'sp_testimonial_post_type_labels',
 			array(
-				'name'                  => __( 'All Testimonials', 'testimonial-free' ),
-				'singular_name'         => __( 'Testimonial', 'testimonial-free' ),
-				'menu_name'             => __( 'Testimonial', 'testimonial-free' ),
-				'all_items'             => __( 'All Testimonials', 'testimonial-free' ),
-				'add_new'               => __( 'Add New Testimonial', 'testimonial-free' ),
-				'add_new_item'          => __( 'Add New Testimonial', 'testimonial-free' ),
+				'name'                  => __( 'All ' . $plural_name . '', 'testimonial-free' ),
+				'singular_name'         => $singular_name,
+				'menu_name'             => $singular_name,
+				'all_items'             => __( 'All  ' . $plural_name . '', 'testimonial-free' ),
+				'add_new'               => __( 'Add New', 'testimonial-free' ),
+				'add_new_item'          => __( 'Add New', 'testimonial-free' ),
 				'edit'                  => __( 'Edit', 'testimonial-free' ),
-				'edit_item'             => __( 'Edit Testimonial', 'testimonial-free' ),
-				'new_item'              => __( 'New Testimonial', 'testimonial-free' ),
-				'search_items'          => __( 'Search Testimonials', 'testimonial-free' ),
-				'not_found'             => __( 'No Testimonials found', 'testimonial-free' ),
-				'not_found_in_trash'    => __( 'No Testimonials found in Trash', 'testimonial-free' ),
-				'parent'                => __( 'Parent Testimonials', 'testimonial-free' ),
-				'featured_image'        => __( 'Testimonial Image', 'testimonial-free' ),
-				'set_featured_image'    => __( 'Set Testimonial image', 'testimonial-free' ),
+				'edit_item'             => __( 'Edit ' . $singular_name . '', 'testimonial-free' ),
+				'new_item'              => __( 'New ' . $singular_name . '', 'testimonial-free' ),
+				'search_items'          => __( 'Search ' . $plural_name . '', 'testimonial-free' ),
+				'not_found'             => __( 'No ' . $plural_name . ' found', 'testimonial-free' ),
+				'not_found_in_trash'    => __( 'No ' . $plural_name . ' found in Trash', 'testimonial-free' ),
+				'parent'                => __( 'Parent ' . $plural_name . '', 'testimonial-free' ),
+				'featured_image'        => __( $singular_name . ' Image', 'testimonial-free' ),
+				'set_featured_image'    => __( 'Set ' . $singular_name . '  image', 'testimonial-free' ),
 				'remove_featured_image' => __( 'Remove image', 'testimonial-free' ),
 				'use_featured_image'    => __( 'Use as image', 'testimonial-free' ),
 			)
@@ -76,8 +98,8 @@ class SP_TFREE_Testimonial {
 		$args = apply_filters(
 			'sp_testimonial_post_type_args',
 			array(
-				'label'              => __( 'Testimonial', 'testimonial-free' ),
-				'description'        => __( 'Testimonial custom post type.', 'testimonial-free' ),
+				'label'              => $singular_name,
+				'description'        => __( $singular_name . '  custom post type.', 'testimonial-free' ),
 				'taxonomies'         => array(),
 				'public'             => false,
 				'has_archive'        => false,
@@ -101,6 +123,14 @@ class SP_TFREE_Testimonial {
 		);
 
 		register_post_type( 'spt_testimonial', $args );
+	}
+
+	public function sptfree_conditional_redirect_post_new() {
+		global $_REQUEST,$pagenow;
+		if ( ! empty( $_REQUEST['post_type'] ) && 'spt_testimonial_form' == $_REQUEST['post_type'] && ! empty( $pagenow ) && 'edit.php' == $pagenow ) {
+			header( 'Location: ' . get_admin_url( null, 'post-new.php?post_type=spt_testimonial_form' ) );
+			exit;
+		}
 	}
 
 }

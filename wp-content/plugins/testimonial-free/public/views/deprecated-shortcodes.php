@@ -8,7 +8,7 @@ function sp_testimonial_free_shortcode( $atts ) {
 	extract(
 		shortcode_atts(
 			array(
-				'color'      => '#52b3d9',
+				'color'      => '#1595ce',
 				'nav'        => 'true',
 				'pagination' => 'true',
 				'autoplay'   => 'true',

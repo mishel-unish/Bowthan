@@ -17,7 +17,8 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_image_select' ) ) {
 		public function render() {
 
 			$args = wp_parse_args(
-				$this->field, array(
+				$this->field,
+				array(
 					'multiple' => false,
 					'options'  => array(),
 				)
@@ -35,12 +36,13 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_image_select' ) ) {
 
 				foreach ( $args['options'] as $key => $option ) {
 
-					$type    = ( $args['multiple'] ) ? 'checkbox' : 'radio';
-					$extra   = ( $args['multiple'] ) ? '[]' : '';
-					$active  = ( in_array( $key, $value ) ) ? ' spftestimonial--active' : '';
-					$checked = ( in_array( $key, $value ) ) ? ' checked' : '';
+					$type      = ( $args['multiple'] ) ? 'checkbox' : 'radio';
+					$extra     = ( $args['multiple'] ) ? '[]' : '';
+					$active    = ( in_array( $key, $value ) ) ? ' spftestimonial--active' : '';
+					$checked   = ( in_array( $key, $value ) ) ? ' checked' : '';
+					$opt_class = isset( $option['class'] ) && ! empty( $option['class'] ) ? $option['class'] : '';
 
-					echo '<div class="spftestimonial--sibling spftestimonial--image' . $active . ' ' . $option['class'] . '">';
+					echo '<div class="spftestimonial--sibling spftestimonial--image' . $active . ' ' . $opt_class . '">';
 					echo '<img src="' . $option['image'] . '" alt="img-' . $num++ . '" />';
 					if ( isset( $option['name'] ) ) {
 						echo '<p>' . $option['name'] . '</p>';

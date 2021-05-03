@@ -61,7 +61,7 @@
 }
 .sp-testimonial-section .slick-prev:hover,
 .sp-testimonial-section .slick-next:hover{
-    color: #52b3d9;
+    color: #1595ce;
 }
 .sp-testimonial-section .slick-prev{
     left: 0;
@@ -97,7 +97,7 @@
     display: block;
 }
 .sp-testimonial-section .slick-dots li.slick-active button{
-    background: #52b3d9;
+    background: #1595ce;
 }
 
 /* Image Style */

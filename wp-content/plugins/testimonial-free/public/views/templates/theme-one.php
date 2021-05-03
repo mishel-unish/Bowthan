@@ -13,7 +13,7 @@ if ( $client_image && has_post_thumbnail( $post_query->post->ID ) ) {
 }
 
 if ( $testimonial_title && ! empty( get_the_title() ) ) {
-	$outline .= '<div class="tfree-testimonial-title"><h3>' . get_the_title() . '</h3></div>';
+	$outline .= '<div class="tfree-testimonial-title"><' . $testimonial_title_tag . '>' . get_the_title() . '</' . $testimonial_title_tag . '></div>';
 }
 
 if ( $testimonial_text && ! empty( get_the_content() ) ) {
@@ -23,7 +23,7 @@ if ( $testimonial_text && ! empty( get_the_content() ) ) {
 }
 
 if ( $reviewer_name && ! empty( $tfree_name ) ) {
-	$outline .= '<h4 class="tfree-client-name">' . $tfree_name . '</h2>';
+	$outline .= '<h4 class="tfree-client-name">' . $tfree_name . '</h4>';
 }
 
 if ( $star_rating && ! empty( $tfree_rating_star ) ) {

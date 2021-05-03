@@ -1514,7 +1514,7 @@ msgid "All Testimonials"
 msgstr ""
 
 #: class/testimonial.php:60 class/testimonial.php:61
-msgid "Add New Testimonial"
+msgid "Add New"
 msgstr ""
 
 #: class/testimonial.php:63

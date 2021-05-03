@@ -31,10 +31,11 @@ class Testimonial_Updates {
 	 *
 	 * @var array
 	 */
-	private static $updates = [
-		'2.1.5' => 'updates/update-2.1.5.php',
-		'2.2.5' => 'updates/update-2.2.5.php',
-	];
+	private static $updates = array(
+		'2.1.5'  => 'updates/update-2.1.5.php',
+		'2.2.5'  => 'updates/update-2.2.5.php',
+		'2.2.10' => 'updates/update-2.2.10.php',
+	);
 
 	/**
 	 * Binding all events
@@ -56,8 +57,8 @@ class Testimonial_Updates {
 	 */
 	public function is_needs_update() {
 		$installed_version = get_option( 'testimonial_version' );
-		$first_version = get_option( 'testimonial_first_version' );
-		$activation_date = get_option( 'testimonial_activation_date' );
+		$first_version     = get_option( 'testimonial_first_version' );
+		$activation_date   = get_option( 'testimonial_activation_date' );
 
 		if ( false === $installed_version ) {
 			update_option( 'testimonial_version', SP_TFREE_VERSION );

@@ -92,25 +92,27 @@ if ( ! class_exists( 'TFREE_Shortcode_Render' ) ) {
 			shortcode_atts(
 				array(
 					'id' => '',
-				), $attributes, 'sp_testimonial'
+				),
+				$attributes,
+				'sp_testimonial'
 			);
 
 			$post_id = $attributes['id'];
 
-			$setting_options = get_option( '_sp_testimonial_options' );
+			$setting_options = get_option( 'sp_testimonial_pro_options' );
 			$shortcode_data  = get_post_meta( $post_id, 'sp_tpro_shortcode_options', true );
 
 			// General Settings.
-			$theme_style                    = isset( $shortcode_data['theme_style'] ) ? $shortcode_data['theme_style'] : 'theme-one';
-			$number_of_total_testimonials   = isset( $shortcode_data['number_of_total_testimonials'] ) ? $shortcode_data['number_of_total_testimonials'] : '10';
-			$order_by                       = isset( $shortcode_data['testimonial_order_by'] ) ? $shortcode_data['testimonial_order_by'] : 'date';
-			$order                          = isset( $shortcode_data['testimonial_order'] ) ? $shortcode_data['testimonial_order'] : 'DESC';
-			$columns = isset( $shortcode_data['columns'] ) ? $shortcode_data['columns'] : '';
-			$columns_large_desktop               = isset( $columns['large_desktop'] ) ? $columns['large_desktop'] : '1';
-			$columns_desktop       = isset( $columns['desktop'] ) ? $columns['desktop'] : '1';
-			$columns_laptop = isset( $columns['laptop'] ) ? $columns['laptop'] : '1';
-			$columns_tablet        = isset( $columns['tablet'] ) ? $columns['tablet'] : '1';
-			$columns_mobile        = isset( $columns['mobile'] ) ? $columns['mobile'] : '1';
+			$theme_style                  = isset( $shortcode_data['theme_style'] ) ? $shortcode_data['theme_style'] : 'theme-one';
+			$number_of_total_testimonials = isset( $shortcode_data['number_of_total_testimonials'] ) ? $shortcode_data['number_of_total_testimonials'] : '10';
+			$order_by                     = isset( $shortcode_data['testimonial_order_by'] ) ? $shortcode_data['testimonial_order_by'] : 'date';
+			$order                        = isset( $shortcode_data['testimonial_order'] ) ? $shortcode_data['testimonial_order'] : 'DESC';
+			$columns                      = isset( $shortcode_data['columns'] ) ? $shortcode_data['columns'] : '';
+			$columns_large_desktop        = isset( $columns['large_desktop'] ) ? $columns['large_desktop'] : '1';
+			$columns_desktop              = isset( $columns['desktop'] ) ? $columns['desktop'] : '1';
+			$columns_laptop               = isset( $columns['laptop'] ) ? $columns['laptop'] : '1';
+			$columns_tablet               = isset( $columns['tablet'] ) ? $columns['tablet'] : '1';
+			$columns_mobile               = isset( $columns['mobile'] ) ? $columns['mobile'] : '1';
 
 			// Slider Settings.
 			$slider_auto_play = isset( $shortcode_data['slider_auto_play'] ) ? $shortcode_data['slider_auto_play'] : 'true';
@@ -159,9 +161,9 @@ if ( ! class_exists( 'TFREE_Shortcode_Render' ) ) {
 					break;
 			}
 			$slider_pagination       = isset( $shortcode_data['pagination'] ) ? $shortcode_data['pagination'] : 'true';
-			$pagination_colors        = isset( $shortcode_data['pagination_colors'] ) ? $shortcode_data['pagination_colors'] : '#cccccc';
+			$pagination_colors       = isset( $shortcode_data['pagination_colors'] ) ? $shortcode_data['pagination_colors'] : '#cccccc';
 			$pagination_color        = isset( $pagination_colors['color'] ) ? $pagination_colors['color'] : '#cccccc';
-			$pagination_active_color = isset( $pagination_colors['active-color'] ) ? $pagination_colors['active-color'] : '#52b3d9';
+			$pagination_active_color = isset( $pagination_colors['active-color'] ) ? $pagination_colors['active-color'] : '#1595ce';
 			switch ( $slider_pagination ) {
 				case 'true':
 					$pagination        = 'true';
@@ -178,23 +180,24 @@ if ( ! class_exists( 'TFREE_Shortcode_Render' ) ) {
 			}
 			$adaptive_height  = isset( $shortcode_data['adaptive_height'] ) && $shortcode_data['adaptive_height'] ? 'true' : 'false';
 			$slider_swipe     = isset( $shortcode_data['slider_swipe'] ) && $shortcode_data['slider_swipe'] ? 'true' : 'false';
-			$swipe_to_slide     = isset( $shortcode_data['swipe_to_slide'] ) && $shortcode_data['swipe_to_slide'] ? 'true' : 'false';
+			$swipe_to_slide   = isset( $shortcode_data['swipe_to_slide'] ) && $shortcode_data['swipe_to_slide'] ? 'true' : 'false';
 			$slider_draggable = isset( $shortcode_data['slider_draggable'] ) && $shortcode_data['slider_draggable'] ? 'true' : 'false';
-			$slider_direction        = isset( $shortcode_data['slider_direction'] ) ? $shortcode_data['slider_direction'] : 'ltr';
-			$rtl_mode = ( 'rtl' == $slider_direction ) ? 'true' : 'false';
+			$slider_direction = isset( $shortcode_data['slider_direction'] ) ? $shortcode_data['slider_direction'] : 'ltr';
+			$rtl_mode         = ( 'rtl' == $slider_direction ) ? 'true' : 'false';
 
 			// Display Settings.
-			$section_title     = isset( $shortcode_data['section_title'] ) ? $shortcode_data['section_title'] : '';
-			$testimonial_title = isset( $shortcode_data['testimonial_title'] ) ? $shortcode_data['testimonial_title'] : '';
-			$testimonial_text  = isset( $shortcode_data['testimonial_text'] ) ? $shortcode_data['testimonial_text'] : '';
-			$reviewer_name     = isset( $shortcode_data['testimonial_client_name'] ) ? $shortcode_data['testimonial_client_name'] : '';
-			$star_rating       = isset( $shortcode_data['testimonial_client_rating'] ) ? $shortcode_data['testimonial_client_rating'] : '';
-			$star_rating_color = isset( $shortcode_data['testimonial_client_rating_color'] ) ? $shortcode_data['testimonial_client_rating_color'] : '#f3bb00';
-			$reviewer_position = isset( $shortcode_data['client_designation'] ) ? $shortcode_data['client_designation'] : '';
+			$section_title         = isset( $shortcode_data['section_title'] ) ? $shortcode_data['section_title'] : '';
+			$testimonial_title     = isset( $shortcode_data['testimonial_title'] ) ? $shortcode_data['testimonial_title'] : '';
+			$testimonial_title_tag = isset( $shortcode_data['testimonial_title_tag'] ) ? $shortcode_data['testimonial_title_tag'] : 'h3';
+			$testimonial_text      = isset( $shortcode_data['testimonial_text'] ) ? $shortcode_data['testimonial_text'] : '';
+			$reviewer_name         = isset( $shortcode_data['testimonial_client_name'] ) ? $shortcode_data['testimonial_client_name'] : '';
+			$star_rating           = isset( $shortcode_data['testimonial_client_rating'] ) ? $shortcode_data['testimonial_client_rating'] : '';
+			$star_rating_color     = isset( $shortcode_data['testimonial_client_rating_color'] ) ? $shortcode_data['testimonial_client_rating_color'] : '#f3bb00';
+			$reviewer_position     = isset( $shortcode_data['client_designation'] ) ? $shortcode_data['client_designation'] : '';
 
 			// Image Settings.
 			$client_image = isset( $shortcode_data['client_image'] ) ? $shortcode_data['client_image'] : true;
-			$image_sizes = isset( $shortcode_data['image_sizes'] ) ? $shortcode_data['image_sizes'] : 'tf-client-image-size';
+			$image_sizes  = isset( $shortcode_data['image_sizes'] ) ? $shortcode_data['image_sizes'] : 'tf-client-image-size';
 
 			// Typography.
 			$section_title_color      = isset( $shortcode_data['section_title_typography'] ) ? $shortcode_data['section_title_typography']['color'] : '#444444';
@@ -202,9 +205,20 @@ if ( ! class_exists( 'TFREE_Shortcode_Render' ) ) {
 			$testimonial_text_color   = isset( $shortcode_data['testimonial_text_typography'] ) ? $shortcode_data['testimonial_text_typography']['color'] : '#333333';
 			$client_name_color        = isset( $shortcode_data['client_name_typography'] ) ? $shortcode_data['client_name_typography']['color'] : '#333333';
 			$client_designation_color = isset( $shortcode_data['client_designation_company_typography'] ) ? $shortcode_data['client_designation_company_typography']['color'] : '#444444';
+			// Preloader.
+			$preloader = isset( $shortcode_data['preloader'] ) ? $shortcode_data['preloader'] : false;
+			// Schema markup.
+			if ( isset( $shortcode_data['schema_markup'] ) ) {
+				$schema_markup = $shortcode_data['schema_markup'];
+			} else {
+				$schema_markup = isset( $setting_options['spt_enable_schema'] ) ? $setting_options['spt_enable_schema'] : false;
+			}
 
 			// Enqueue Script.
-			wp_enqueue_script( 'tfree-slick-min-js' );
+			$dequeue_slick_js = isset( $setting_options['tf_dequeue_slick_js'] ) ? $setting_options['tf_dequeue_slick_js'] : true;
+			if ( $dequeue_slick_js ) {
+				wp_enqueue_script( 'tfree-slick-min-js' );
+			}
 			wp_enqueue_script( 'tfree-slick-active' );
 
 			$outline = '';
@@ -282,16 +296,19 @@ if ( ! class_exists( 'TFREE_Shortcode_Render' ) ) {
 			if ( $section_title ) {
 				$outline .= '<h2 class="sp-testimonial-free-section-title">' . get_the_title( $post_id ) . '</h2>';
 			}
-
-			$outline                 .= '<div id="sp-testimonial-free-' . $post_id . '" class="sp-testimonial-free-section tfree-style-' . $theme_style . '" dir="' . $slider_direction . '" data-slick=\'{"dots": ' . $pagination . ', "adaptiveHeight": ' . $adaptive_height . ', "pauseOnHover": ' . $slider_pause_on_hover . ', "slidesToShow": ' . $columns_large_desktop . ', "speed": ' . $slider_scroll_speed . ', "arrows": ' . $navigation . ', "autoplay": ' . $auto_play . ', "autoplaySpeed": ' . $slider_auto_play_speed . ', "swipe": ' . $slider_swipe . ', "swipeToSlide": ' . $swipe_to_slide . ', "draggable": ' . $slider_draggable . ', "rtl": ' . $rtl_mode . ', "infinite": ' . $slider_infinite . ', "responsive": [
+			if ( $preloader ) {
+				$preloader_style = ( $preloader ) ? '' : 'display: none;';
+				$outline        .= '<div class="tfree-preloader" id="tfree-preloader-' . $post_id . '" style="' . $preloader_style . '"><img src="' . SP_TFREE_URL . 'public/assets/img/preloader.gif"/></div>';
+			}
+			$outline                 .= '<div id="sp-testimonial-free-' . $post_id . '" class="sp-testimonial-free-section tfree-style-' . $theme_style . '" dir="' . $slider_direction . '" data-preloader="' . $preloader . '" data-slick=\'{"dots": ' . $pagination . ', "adaptiveHeight": ' . $adaptive_height . ', "pauseOnHover": ' . $slider_pause_on_hover . ', "slidesToShow": ' . $columns_large_desktop . ', "speed": ' . $slider_scroll_speed . ', "arrows": ' . $navigation . ', "autoplay": ' . $auto_play . ', "autoplaySpeed": ' . $slider_auto_play_speed . ', "swipe": ' . $slider_swipe . ', "swipeToSlide": ' . $swipe_to_slide . ', "draggable": ' . $slider_draggable . ', "rtl": ' . $rtl_mode . ', "infinite": ' . $slider_infinite . ', "responsive": [
 				{
-					"breakpoint": 1280, "settings": { "slidesToShow": ' . $columns_desktop . ' } 
+					"breakpoint": 1280, "settings": { "slidesToShow": ' . $columns_desktop . ' }
 				},
 				{
-					"breakpoint": 980, "settings": { "slidesToShow": ' . $columns_laptop . ' } 
+					"breakpoint": 980, "settings": { "slidesToShow": ' . $columns_laptop . ' }
 				},
 				{
-					"breakpoint": 736, "settings": { "slidesToShow": ' . $columns_tablet . ' } 
+					"breakpoint": 736, "settings": { "slidesToShow": ' . $columns_tablet . ' }
 				},
 				{
 					"breakpoint": 480, "settings": {
@@ -299,7 +316,7 @@ if ( ! class_exists( 'TFREE_Shortcode_Render' ) ) {
 						"dots": ' . $pagination_mobile . ',
 						"arrows": ' . $navigation_mobile . ',
 						"autoplay": ' . $auto_play_mobile . '
-					} 
+					}
 				}
 				] }\'>';
 			$total_rating_count       = 0;
@@ -325,7 +342,7 @@ if ( ! class_exists( 'TFREE_Shortcode_Render' ) ) {
 			$aggregate_rating = round( ( $total_rating_count / $total_rated_testimonials ), 2 );
 
 			$outline .= '</div>';
-			if ( $setting_options['spt_enable_schema'] ) {
+			if ( $schema_markup ) {
 				include SP_TFREE_PATH . '/public/views/schema.php';
 			}
 			$outline .= '</div>';

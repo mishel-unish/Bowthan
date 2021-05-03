@@ -77,7 +77,7 @@ class TFREE_Widget_Content extends WP_Widget {
 
 		} else {
 			echo sprintf(
-				'<p>%1$s <a href="' . admin_url( 'post-new.php?post_type=sp_tfree_shortcodes' ) . '">%3$s</a> %2$s</p>',
+				'<p>%1$s <a href="' . admin_url( 'post-new.php?post_type=spt_shortcodes' ) . '">%3$s</a> %2$s</p>',
 				__( 'You did not generate any shortcode yet.', 'testimonial-free' ),
 				__( 'to generate a new shortcode now.', 'testimonial-free' ),
 				__( 'click here', 'testimonial-free' )
@@ -102,7 +102,7 @@ class TFREE_Widget_Content extends WP_Widget {
 	private function shortcodes_list() {
 		$shortcodes = get_posts(
 			array(
-				'post_type'   => 'sp_tfree_shortcodes',
+				'post_type'   => 'spt_shortcodes',
 				'post_status' => 'publish',
 			)
 		);

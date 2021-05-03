@@ -53,7 +53,7 @@ class Testimonial_Review {
 		?>
 		<div id="sp-tfree-review-notice" class="sp-tfree-review-notice">
 			<div class="sp-tfree-plugin-icon">
-				<img src="<?php echo SP_TFREE_URL . 'admin/assets/images/icon-256.png'; ?>" alt="Testimonial">
+				<img src="<?php echo SP_TFREE_URL . 'admin/assets/images/Testimonial-icon.svg'; ?>" alt="Testimonial">
 			</div>
 			<div class="sp-tfree-notice-text">
 				<h3>Enjoying <strong>Testimonial</strong>?</h3>

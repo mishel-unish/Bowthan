@@ -40,7 +40,7 @@ if( ! class_exists( 'SPFTESTIMONIAL_Field_code_editor' ) ) {
     public function enqueue() {
 
       $screen = get_current_screen();
-			if ( $screen->post_type == 'spt_testimonial' || $screen->post_type == 'sp_tfree_shortcodes' ) {
+			if ( $screen->post_type == 'spt_testimonial' || $screen->post_type == 'spt_shortcodes' ) {
       // Do not loads CodeMirror in revslider page.
       if( in_array( spftestimonial_get_var( 'page' ), array( 'revslider' ) ) ) { return; }
 

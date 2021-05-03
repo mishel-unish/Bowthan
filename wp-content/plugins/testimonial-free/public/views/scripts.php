@@ -1,6 +1,7 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) { exit; }  // if direct access
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; }  // if direct access
 
 /**
  * Scripts and styles
@@ -37,9 +38,17 @@ class SP_TFREE_Front_Scripts {
 	 * Plugin Scripts and Styles
 	 */
 	function front_scripts() {
+		$setting_options   = get_option( 'sp_testimonial_pro_options' );
+		$dequeue_slick_css = isset( $setting_options['tf_dequeue_slick_css'] ) ? $setting_options['tf_dequeue_slick_css'] : true;
+		$dequeue_fa_css    = isset( $setting_options['tf_dequeue_fa_css'] ) ? $setting_options['tf_dequeue_fa_css'] : true;
 		// CSS Files.
-		wp_enqueue_style( 'tfree-slick', SP_TFREE_URL . 'public/assets/css/slick.css', array(), SP_TFREE_VERSION );
-		wp_enqueue_style( 'tfree-font-awesome', SP_TFREE_URL . 'public/assets/css/font-awesome.min.css', array(), SP_TFREE_VERSION );
+		if ( $dequeue_slick_css ) {
+			wp_enqueue_style( 'tfree-slick', SP_TFREE_URL . 'public/assets/css/slick.css', array(), SP_TFREE_VERSION );
+		}
+		if ( $dequeue_fa_css ) {
+			wp_enqueue_style( 'tfree-font-awesome', SP_TFREE_URL . 'public/assets/css/font-awesome.min.css', array(), SP_TFREE_VERSION );
+		}
+
 		wp_enqueue_style( 'tfree-deprecated-style', SP_TFREE_URL . 'public/assets/css/deprecated-style.css', array(), SP_TFREE_VERSION );
 		wp_enqueue_style( 'tfree-style', SP_TFREE_URL . 'public/assets/css/style.css', array(), SP_TFREE_VERSION );
 		include SP_TFREE_PATH . '/includes/custom-css.php';

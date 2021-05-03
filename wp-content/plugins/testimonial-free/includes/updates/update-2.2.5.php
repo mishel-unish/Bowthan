@@ -63,7 +63,7 @@ if ( count( $shortcode_ids ) > 0 ) {
 			'all'         => '0',
 			'style'       => 'solid',
 			'color'       => '#777777',
-			'hover-color' => '#52b3d9',
+			'hover-color' => '#1595ce',
 		);
 		if ( ! empty( $navigation_arrow_color ) ) {
 			unset( $shortcode_data['navigation_arrow_color'] );

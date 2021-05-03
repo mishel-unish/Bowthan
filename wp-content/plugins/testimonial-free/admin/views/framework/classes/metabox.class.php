@@ -197,11 +197,12 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Metabox' ) ) {
 
 			$current_screen        = get_current_screen();
 			$the_current_post_type = $current_screen->post_type;
-			if ( $the_current_post_type == 'sp_tfree_shortcodes' ) { ?>
+			if ( $the_current_post_type == 'spt_shortcodes' ) { ?>
+			<div class="sptpro-after-copy-text"><i class="fa fa-check-circle"></i>  Shortcode  Copied to Clipboard! </div>
 	  <div class="sp-tpro-banner">
-			<div class="sp-tpro-logo"><img src="<?php echo SP_TFREE_URL . 'admin/assets/images/testimonial-logo.png'; ?>" alt="Testimonial"></div>
+			<div class="sp-tpro-logo"><img src="<?php echo SP_TFREE_URL . 'admin/assets/images/testimonial-logo.svg'; ?>" alt="Testimonial"></div>
 		<div class="sp-tpro-short-links">
-		  <a href="https://shapedplugin.com/support-forum/" target="_blank"><i class="fa fa-life-ring"></i>Support</a>
+		  <a href="https://shapedplugin.com/support/?user=lite" target="_blank"><i class="fa fa-life-ring"></i>Support</a>
 		</div>
 		  </div>
 		<div class="tpro_shortcode text-center">
@@ -213,11 +214,12 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Metabox' ) ) {
 					?>
 				</h2>
 				<p><?php _e( 'Copy and paste this shortcode into your posts or pages:', 'testimonial-free' ); ?></p>
+				<img class="trpo-copy-btn" src="<?php echo SP_TFREE_URL; ?>admin/assets/images/copy.svg">
 				<div class="tpro-sc-code selectable" >[sp_testimonial 
-					<?php
+				<?php
 					echo 'id="' . $post->ID . '"';
-					?>
-					]</div>
+				?>
+				]</div>
 			</div>
 		  </div>
 		  <div class="tpro-col-lg-6">
@@ -228,6 +230,7 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Metabox' ) ) {
 					?>
 				</h2>
 				<p><?php _e( 'Paste the PHP code into your template file:', 'testimonial-free' ); ?></p>
+				<img class="trpo-copy-btn" src="<?php echo SP_TFREE_URL; ?>admin/assets/images/copy.svg">
 				<div class="tpro-sc-code selectable">
 				&lt;?php echo do_shortcode('[sp_testimonial id="<?php echo $post->ID; ?>"]');
 				?&gt;</div>

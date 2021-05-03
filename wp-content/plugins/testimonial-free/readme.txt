@@ -1,9 +1,9 @@
 === Testimonial – Best Testimonial Slider Plugin for WordPress ===
-Contributors: shapedplugin
+Contributors: shapedplugin, rubel_miah, khalilu, shamimmiashuhagh
 Donate link: http://shapedplugin.com/donate
 Tags: testimonial, testimonials, testimonial showcase, testimonials showcase, testimonial slider, testimonials slider, testimonial carousel, testimonial front-end submission form, testimonials widget, easy testimonial, testimonial rotator, random testimonials, custom testimonial, collect testimonials, social proof, simple testimonial plugin, best testimonials showcase plugin, free testimonial, customers reviews
 Requires at least: 4.0
-Tested up to: 5.6
+Tested up to: 5.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,11 +12,9 @@ Most customizable. Developer-friendly. Active support. Manage and display testim
 
 == Description ==
 
+[__Live Demo__](https://demo.shapedplugin.com/testimonial/) | [__Upgrade to Pro!__](https://shapedplugin.com/plugin/testimonial-pro/?ref=1) | [__Documentaion__](https://docs.shapedplugin.com/docs/testimonial/overview/) | [__Support__](https://shapedplugin.com/support/?user=lite)
 
-**[Live Demo](http://shapedplugin.com/demo/testimonial-pro/)**
-
-[youtube https://www.youtube.com/watch?v=htnj97_K3ys]
-
+[youtube https://www.youtube.com/watch?v=58a3L4q_8Tc&list=PLoUb-7uG-5jPTDu5wiWwKhJNuWFWSyA5T&ab_channel=ShapedPlugin]
 
 = Overview =
 
@@ -36,10 +34,10 @@ Testimonials are a great way to strengthen your brand and reliability with new c
 = Basic Input Fields =
 
 * Image
-* Testimonial title or Tagline 
+* Testimonial title or Tagline
 * Testimonial content or Review message
-* Reviewer name 
-* Rating star 
+* Reviewer name
+* Rating star
 * Reviewer identity or Position
 
 
@@ -81,16 +79,6 @@ Testimonials are a great way to strengthen your brand and reliability with new c
 * Schema.org compliant JSON-LD markup & optimized for speed.
 * Support all modern browsers: Firefox, Chrome, IE, Safari etc.
 * And much more options.
-
-= SUPPORT =
-If you find any issue or need help, please ask us. We are active in WordPress.org [Support Forum](https://shapedplugin.com/support-forum/).
-
-= NOTE =
-This plugin is actively being developed & improved. We’re far from done and are adding new features, functionality, and fixes daily. If there’s a feature you want but we don’t have yet, please [let us know](https://shapedplugin.com/contact-us/).
-
-
-= DONATE or BUY PREMIUM =
-Please [Donate](http://shapedplugin.com/donate) or [Buy Premium](https://shapedplugin.com/plugin/testimonial-pro/) version for this awesome plugin to continue it’s development to bring more awesome features.
 
 
 = AUTHOR =
@@ -154,10 +142,10 @@ Yes, the Testimonial is fully responsive & columns structured. You can control t
 No coding skills required - very easy to use. No more pain writing any shortcode attributes to display testimonial on your website. With just a few clicks, you can amazingly showcase your testimonials using a very intuitive Shortcode Generator settings.
 
 = Will it automatically use my existing testimonials when Upgrade to Pro? =
-Yes. If you already have testimonials in the free version on your theme or site, you will automatically get the testimonials to use in the Pro version. 
+Yes. If you already have testimonials in the free version on your theme or site, you will automatically get the testimonials to use in the Pro version.
 
 = Should I purchase the Pro version? =
-Testimonial Pro includes tons of amazing and useful features that can definitely increase your conversion rate. If you’re interested to get the Testimonial Pro, Please go to [Upgrade to Pro!](https://shapedplugin.com/plugin/testimonial-pro/) Page and browse [Live Demo](https://shapedplugin.com/demo/testimonial-pro/).
+Testimonial Pro includes tons of amazing and useful features that can definitely increase your conversion rate. If you’re interested to get the Testimonial Pro, Please go to [Upgrade to Pro!](https://shapedplugin.com/plugin/testimonial-pro/?ref=1) Page and browse [Live Demo](https://demo.shapedplugin.com/testimonial/).
 
 = Is the Testimonial compatible with my theme or design? =
 Testimonial works nicely with any theme if themes are developed according to WordPress standard.
@@ -171,13 +159,13 @@ Ensure that your plugin version and your theme version are updated and that the 
 
 If none of the previously listed actions help you solve the problem, then, submit a ticket in the forum and describe your problem accurately, specify WordPress and Plugin versions you are using and any other information that might help us solve your problem as quickly as possible.
 
-PRO version users [Support Forum](https://shapedplugin.com/support/) and Free or Lite Version [Support Forum](https://shapedplugin.com/support-forum/).
+PRO version users [Support](https://shapedplugin.com/support/) and Free or Lite Version [Support](https://shapedplugin.com/support/?user=lite).
 
 = Is Testimonial translation ready? =
 Yes, Testimonial is fully Translation ready, supporting .pot language files! You can translate into your language with the following popular plugins like WPML, Polylang, qTranslate-x, GTranslate, Google Language Translator, WPGlobus etc.
 
 = Where can I report bugs? =
-Bugs can be reported in our **[Support Forum](https://shapedplugin.com/support-forum/)**.
+Bugs can be reported in our **[Support](https://shapedplugin.com/support/?user=lite)**.
 
 = Do you want to encourage us for future improvement? =
 If you like this plugin, please give [5 stars](https://wordpress.org/support/plugin/testimonial-free/reviews/?filter=5#new-post) to encourage us for future improvement
@@ -189,15 +177,43 @@ Thank you!
 == Screenshots ==
 1. Live Demo (Free)
 2. Add New Testimonial
-3. Testimonials
-4. General Settings
-5. Slider Settings
-6. Stylization
-7. Typography(Pro)
+3. General Settings
+4. Theme Settings
+5. Display Settings
+6. Slider Settings
+7. Image Settings
+8. Typography (Pro)
+9. All Testimonials
+10. Advanced Settings
+11. Menu Settings
+12. Recaptcha (Pro)
+13. Custom CSS
 
 
 
 == Changelog ==
+
+= 2.2.11 - Mar 17, 2021 =
+* Fix: Reviewer name formatting issue.
+
+= 2.2.10 - Mar 11, 2021 =
+* New: Shortcode onClick copy option.
+* New: Testimonial title HTML tag change option.
+* Improved: Dashboard Generator Settings panel.
+* Improved: Settings page.
+* Improved: Help page.
+* Fix: Slider blurry issue.
+* Fix: Free to Pro upgrading compatibility issue.
+
+= 2.2.9 - Feb 08, 2021 =
+* New: Preloader option.
+* New: Clean up data on plugin deletion option.
+* New: FontAwesome enqueue/dequeue option.
+* New: Slick enqueue/dequeue option.
+* New: Menu settings.
+* Fix: Image column height width issue in All Testimonials page.
+* Fix: Number field control issue.
+* Improved: Dashboard Settings panel.
 
 = 2.2.8 - Dec 15, 2020 =
 * Fix: Slider navigation style issue.
@@ -269,7 +285,7 @@ Thank you!
 
 = 2.0 =
 * Shortcode Generator
-* Star Rating 
+* Star Rating
 * Section Title
 * Testimonial Title or Tagline
 * Unlimited color options for every field.

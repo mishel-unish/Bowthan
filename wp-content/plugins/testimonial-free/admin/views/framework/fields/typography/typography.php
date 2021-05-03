@@ -23,7 +23,8 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 			echo $this->field_before();
 
 			$args = wp_parse_args(
-				$this->field, array(
+				$this->field,
+				array(
 					'font_family'        => true,
 					'font_weight'        => true,
 					'font_style'         => true,
@@ -43,6 +44,10 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 					'word_spacing'       => false,
 					'text_decoration'    => false,
 					'custom_style'       => false,
+					'margin_top'         => false,
+					'margin_right'       => false,
+					'margin_bottom'      => false,
+					'margin-left'        => false,
 					'exclude'            => '',
 					'unit'               => 'px',
 					'preview_text'       => 'The quick brown fox jumps over the lazy dog',
@@ -94,7 +99,8 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 				echo '<div class="spftestimonial--title">' . esc_html__( 'Backup Font Family', 'testimonial-free' ) . '</div>';
 				echo $this->create_select(
 					apply_filters(
-						'spftestimonial_field_typography_backup_font_family', array(
+						'spftestimonial_field_typography_backup_font_family',
+						array(
 							'Arial, Helvetica, sans-serif',
 							"'Arial Black', Gadget, sans-serif",
 							"'Comic Sans MS', cursive, sans-serif",
@@ -108,7 +114,9 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 							'Georgia, serif',
 							'Palatino Linotype',
 						)
-					), 'backup-font-family', esc_html__( 'Default', 'testimonial-free' )
+					),
+					'backup-font-family',
+					esc_html__( 'Default', 'testimonial-free' )
 				);
 				echo '</div>';
 			}
@@ -121,7 +129,7 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 				// Font Style Select
 				echo '<div class="spftestimonial--block spftestimonial--block-font-style hidden">';
 				echo '<div class="spftestimonial--title">' . esc_html__( 'Font Style', 'testimonial-free' ) . '</div>';
-				echo '<select disabled class="spftestimonial--font-style-select" data-placeholder="Default">';
+				echo '<select class="spftestimonial--font-style-select" data-placeholder="Default">';
 				echo '<option value="">' . ( ! $this->chosen ? esc_html__( 'Default', 'testimonial-free' ) : '' ) . '</option>';
 				if ( ! empty( $this->value['font-weight'] ) || ! empty( $this->value['font-style'] ) ) {
 					echo '<option value="' . strtolower( $this->value['font-weight'] . $this->value['font-style'] ) . '" selected></option>';
@@ -167,7 +175,9 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 						'right'   => esc_html__( 'Right', 'testimonial-free' ),
 						'justify' => esc_html__( 'Justify', 'testimonial-free' ),
 						'initial' => esc_html__( 'Initial', 'testimonial-free' ),
-					), 'text-align', esc_html__( 'Default', 'testimonial-free' )
+					),
+					'text-align',
+					esc_html__( 'Default', 'testimonial-free' )
 				);
 				echo '</div>';
 			}
@@ -182,7 +192,9 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 						'normal'         => esc_html__( 'Normal', 'testimonial-free' ),
 						'small-caps'     => esc_html__( 'Small Caps', 'testimonial-free' ),
 						'all-small-caps' => esc_html__( 'All Small Caps', 'testimonial-free' ),
-					), 'font-variant', esc_html__( 'Default', 'testimonial-free' )
+					),
+					'font-variant',
+					esc_html__( 'Default', 'testimonial-free' )
 				);
 				echo '</div>';
 			}
@@ -198,7 +210,9 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 						'capitalize' => esc_html__( 'Capitalize', 'testimonial-free' ),
 						'uppercase'  => esc_html__( 'Uppercase', 'testimonial-free' ),
 						'lowercase'  => esc_html__( 'Lowercase', 'testimonial-free' ),
-					), 'text-transform', esc_html__( 'Default', 'testimonial-free' )
+					),
+					'text-transform',
+					esc_html__( 'Default', 'testimonial-free' )
 				);
 				echo '</div>';
 			}
@@ -218,7 +232,9 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 						'underline wavy'     => esc_html__( 'Wavy', 'testimonial-free' ),
 						'underline overline' => esc_html__( 'Overline', 'testimonial-free' ),
 						'line-through'       => esc_html__( 'Line-through', 'testimonial-free' ),
-					), 'text-decoration', esc_html__( 'Default', 'testimonial-free' )
+					),
+					'text-decoration',
+					esc_html__( 'Default', 'testimonial-free' )
 				);
 				echo '</div>';
 			}
@@ -232,9 +248,10 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 			if ( ! empty( $args['font_size'] ) ) {
 				echo '<div class="spftestimonial--block">';
 				echo '<div class="spftestimonial--title">' . esc_html__( 'Font Size', 'testimonial-free' ) . '</div>';
-				echo '<div class="spftestimonial--input-wrap">';
-				echo '<input disabled type="number" name="' . $this->field_name( '[font-size]' ) . '" class="spftestimonial--font-size spftestimonial--input spftestimonial-input-number" value="' . $this->value['font-size'] . '" />';
-				echo '<span class="spftestimonial--unit">' . $args['unit'] . '</span>';
+				// echo '<div class="spftestimonial--input-wrap">';
+				echo '<div class="spftestimonial--blocks spftestimonial--input-area">';
+				echo '<div class="spftestimonial--block"> <input type="number" name="' . $this->field_name( '[font-size]' ) . '" class="spftestimonial--font-size spftestimonial--input spftestimonial-input-number" value="' . $this->value['font-size'] . '" /></div>';
+				echo '<span class="spftestimonial--block spftestimonial--unit">' . $args['unit'] . '</span>';
 				echo '</div>';
 				echo '</div>';
 			}
@@ -244,9 +261,10 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 			if ( ! empty( $args['line_height'] ) ) {
 				echo '<div class="spftestimonial--block">';
 				echo '<div class="spftestimonial--title">' . esc_html__( 'Line Height', 'testimonial-free' ) . '</div>';
-				echo '<div class="spftestimonial--input-wrap">';
-				echo '<input disabled type="number" name="' . $this->field_name( '[line-height]' ) . '" class="spftestimonial--line-height spftestimonial--input spftestimonial-input-number" value="' . $this->value['line-height'] . '" />';
-				echo '<span class="spftestimonial--unit">' . $args['unit'] . '</span>';
+				// echo '<div class="spftestimonial--input-wrap">';
+				echo '<div class="spftestimonial--blocks spftestimonial--input-area">';
+				echo '<div class="spftestimonial--block"> <input type="number" name="' . $this->field_name( '[line-height]' ) . '" class="spftestimonial--line-height spftestimonial--input spftestimonial-input-number" value="' . $this->value['line-height'] . '" /></div>';
+				echo '<span class="spftestimonial--block spftestimonial--unit">' . $args['unit'] . '</span>';
 				echo '</div>';
 				echo '</div>';
 			}
@@ -256,9 +274,10 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 			if ( ! empty( $args['letter_spacing'] ) ) {
 				echo '<div class="spftestimonial--block">';
 				echo '<div class="spftestimonial--title">' . esc_html__( 'Letter Spacing', 'testimonial-free' ) . '</div>';
-				echo '<div class="spftestimonial--input-wrap">';
-				echo '<input disabled type="number" name="' . $this->field_name( '[letter-spacing]' ) . '" class="spftestimonial--letter-spacing spftestimonial--input spftestimonial-input-number" value="' . $this->value['letter-spacing'] . '" />';
-				echo '<span class="spftestimonial--unit">' . $args['unit'] . '</span>';
+				// echo '<div class="spftestimonial--input-wrap">';
+				echo '<div class="spftestimonial--blocks spftestimonial--input-area">';
+				echo '<div class="spftestimonial--block"> <input type="number" name="' . $this->field_name( '[letter-spacing]' ) . '" class="spftestimonial--letter-spacing spftestimonial--input spftestimonial-input-number" value="' . $this->value['letter-spacing'] . '" /></div>';
+				echo '<span class="spftestimonial--block  spftestimonial--unit">' . $args['unit'] . '</span>';
 				echo '</div>';
 				echo '</div>';
 			}
@@ -268,29 +287,76 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 			if ( ! empty( $args['word_spacing'] ) ) {
 				echo '<div class="spftestimonial--block">';
 				echo '<div class="spftestimonial--title">' . esc_html__( 'Word Spacing', 'testimonial-free' ) . '</div>';
-				echo '<div class="spftestimonial--input-wrap">';
-				echo '<input disabled type="number" name="' . $this->field_name( '[word-spacing]' ) . '" class="spftestimonial--word-spacing spftestimonial--input spftestimonial-input-number" value="' . $this->value['word-spacing'] . '" />';
-				echo '<span class="spftestimonial--unit">' . $args['unit'] . '</span>';
+				// echo '<div class="spftestimonial--input-wrap">';
+				echo '<div class="spftestimonial--blocks spftestimonial--input-area">';
+				echo '<div class="spftestimonial--block"><input type="number" name="' . $this->field_name( '[word-spacing]' ) . '" class="spftestimonial--word-spacing spftestimonial--input spftestimonial-input-number" value="' . $this->value['word-spacing'] . '" /></div>';
+				echo '<span class="spftestimonial--block spftestimonial--unit">' . $args['unit'] . '</span>';
+				echo '</div>';
+				echo '</div>';
+			}
+			//
+			// Margin Top
+			if ( ! empty( $args['margin_top'] ) ) {
+				echo '<div class="spftestimonial--block">';
+				echo '<div class="spftestimonial--title">' . esc_html__( 'Margin Top', 'testimonial-free' ) . '</div>';
+				echo '<div class="spftestimonial--blocks spftestimonial--input-area">';
+				echo '<div class="spftestimonial--block"><input type="number" name="' . $this->field_name( '[margin-top]' ) . '" class="spftestimonial--margin-top spftestimonial--input spftestimonial-number" value="' . $this->value['margin-top'] . '" /></div>';
+				echo '<div class="spftestimonial--block spftestimonial--unit">' . $args['unit'] . '</div>';
 				echo '</div>';
 				echo '</div>';
 			}
 
+			//
+			// Margin Right
+			if ( ! empty( $args['margin_right'] ) ) {
+				echo '<div class="spftestimonial--block">';
+				echo '<div class="spftestimonial--title">' . esc_html__( 'Margin Right', 'testimonial-free' ) . '</div>';
+				echo '<div class="spftestimonial--blocks spftestimonial--input-area">';
+				echo '<div class="spftestimonial--block"><input type="number" name="' . $this->field_name( '[margin-right]' ) . '" class="spftestimonial--margin-right spftestimonial--input spftestimonial-number" value="' . $this->value['margin-right'] . '" /></div>';
+				echo '<div class="spftestimonial--block spftestimonial--unit">' . $args['unit'] . '</div>';
+				echo '</div>';
+				echo '</div>';
+			}
+
+			//
+			// Margin Bottom
+			if ( ! empty( $args['margin_bottom'] ) ) {
+				echo '<div class="spftestimonial--block">';
+				echo '<div class="spftestimonial--title">' . esc_html__( 'Margin Bottom', 'testimonial-free' ) . '</div>';
+				echo '<div class="spftestimonial--blocks spftestimonial--input-area">';
+				echo '<div class="spftestimonial--block"><input type="number" name="' . $this->field_name( '[margin-bottom]' ) . '" class="spftestimonial--margin-bottom spftestimonial--input spftestimonial-number" value="' . $this->value['margin-bottom'] . '" /></div>';
+				echo '<div class="spftestimonial--block spftestimonial--unit">' . $args['unit'] . '</div>';
+				echo '</div>';
+				echo '</div>';
+			}
+
+			//
+			// Margin Left
+			if ( ! empty( $args['margin_left'] ) ) {
+				echo '<div class="spftestimonial--block">';
+				echo '<div class="spftestimonial--title">' . esc_html__( 'Margin Left', 'testimonial-free' ) . '</div>';
+				echo '<div class="spftestimonial--blocks spftestimonial--input-area">';
+				echo '<div class="spftestimonial--block"><input type="number" name="' . $this->field_name( '[margin-left]' ) . '" class="spftestimonial--margin-left spftestimonial--input spftestimonial-number" value="' . $this->value['margin-left'] . '" /></div>';
+				echo '<div class="spftestimonial--block spftestimonial--unit">' . $args['unit'] . '</div>';
+				echo '</div>';
+				echo '</div>';
+			}
 			echo '</div>';
 
 			//
 			// Font Color
 			if ( ! empty( $args['color'] ) ) {
-				$default_color_attr = ( ! empty( $default_value['color'] ) ) ? ' data-default-color="' . $default_value['color'] . '"' : '';
-				echo '<div class="spftestimonial--block spftestimonial--block-font-color">';
-				echo '<div class="spftestimonial--title">' . esc_html__( 'Font Color', 'testimonial-free' ) . '</div>';
-				echo '<div class="spftestimonial-field-color">';
-				echo '<input type="text" name="' . $this->field_name( '[color]' ) . '" class="spftestimonial-color spftestimonial--color" value="' . $this->value['color'] . '"' . $default_color_attr . ' />';
-				echo '</div>';
-				echo '</div>';
+				  $default_color_attr = ( ! empty( $default_value['color'] ) ) ? ' data-default-color="' . $default_value['color'] . '"' : '';
+				  echo '<div class="spftestimonial--block spftestimonial--block-font-color">';
+				  echo '<div class="spftestimonial--title">' . esc_html__( 'Font Color', 'testimonial-free' ) . '</div>';
+				  echo '<div class="spftestimonial-field-color">';
+				  echo '<input type="text" name="' . $this->field_name( '[color]' ) . '" class="spftestimonial-color spftestimonial--color" value="' . $this->value['color'] . '"' . $default_color_attr . ' />';
+				  echo '</div>';
+				  echo '</div>';
 			}
 
-			//
-			// Custom style
+				//
+				// Custom style
 			if ( ! empty( $args['custom_style'] ) ) {
 				echo '<div class="spftestimonial--block spftestimonial--block-custom-style">';
 				echo '<div class="spftestimonial--title">' . esc_html__( 'Custom Style', 'testimonial-free' ) . '</div>';
@@ -298,9 +364,9 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 				echo '</div>';
 			}
 
-			//
-			// Preview
-			$always_preview = ( $args['preview'] !== 'always' ) ? ' hidden' : '';
+				//
+				// Preview
+				$always_preview = ( $args['preview'] !== 'always' ) ? ' hidden' : '';
 
 			if ( ! empty( $args['preview'] ) ) {
 				echo '<div class="spftestimonial--block spftestimonial--block-preview' . $always_preview . '">';
@@ -309,12 +375,12 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 				echo '</div>';
 			}
 
-			echo '<input type="hidden" name="' . $this->field_name( '[type]' ) . '" class="spftestimonial--type" value="' . $this->value['type'] . '" />';
-			echo '<input type="hidden" name="' . $this->field_name( '[unit]' ) . '" class="spftestimonial--unit-save" value="' . $args['unit'] . '" />';
+				echo '<input type="hidden" name="' . $this->field_name( '[type]' ) . '" class="spftestimonial--type" value="' . $this->value['type'] . '" />';
+				echo '<input type="hidden" name="' . $this->field_name( '[unit]' ) . '" class="spftestimonial--unit-save" value="' . $args['unit'] . '" />';
 
-			echo '</div>';
+				echo '</div>';
 
-			echo $this->field_after();
+				echo $this->field_after();
 
 		}
 
@@ -324,7 +390,7 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 			$multiple_attr = ( $is_multiple ) ? ' multiple data-multiple="true"' : '';
 			$chosen_rtl    = ( $this->chosen && is_rtl() ) ? ' chosen-rtl' : '';
 
-			$output  = '<select disabled name="' . $this->field_name( '[' . $name . ']' . $multiple_name ) . '" class="spftestimonial--' . $name . $chosen_rtl . '" data-placeholder="' . $placeholder . '"' . $multiple_attr . '>';
+			$output  = '<select name="' . $this->field_name( '[' . $name . ']' . $multiple_name ) . '" class="spftestimonial--' . $name . $chosen_rtl . '" data-placeholder="' . $placeholder . '"' . $multiple_attr . '>';
 			$output .= ( ! empty( $placeholder ) ) ? '<option value="">' . ( ( ! $this->chosen ) ? $placeholder : '' ) . '</option>' : '';
 
 			if ( ! empty( $options ) ) {
@@ -352,7 +418,7 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 
 				SPFTESTIMONIAL::include_plugin_file( 'fields/typography/google-fonts.php' );
 
-				//wp_enqueue_script( 'spftestimonial-webfont-loader', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array( 'spftestimonial' ), '1.6.28', true );
+				// wp_enqueue_script( 'spftestimonial-webfont-loader', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array( 'spftestimonial' ), '1.6.28', true );
 
 				$webfonts = array();
 
@@ -368,7 +434,8 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 				$webfonts['safe'] = array(
 					'label' => esc_html__( 'Safe Web Fonts', 'testimonial-free' ),
 					'fonts' => apply_filters(
-						'spftestimonial_field_typography_safewebfonts', array(
+						'spftestimonial_field_typography_safewebfonts',
+						array(
 							'Arial',
 							'Arial Black',
 							'Helvetica',
@@ -390,14 +457,16 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 				$webfonts['google'] = array(
 					'label' => esc_html__( 'Google Web Fonts', 'testimonial-free' ),
 					'fonts' => apply_filters(
-						'spftestimonial_field_typography_googlewebfonts', spftestimonial_get_google_fonts()
+						'spftestimonial_field_typography_googlewebfonts',
+						spftestimonial_get_google_fonts()
 					),
 				);
 
 				$defaultstyles = apply_filters( 'spftestimonial_field_typography_defaultstyles', array( 'normal', 'italic', '700', '700italic' ) );
 
 				$googlestyles = apply_filters(
-					'spftestimonial_field_typography_googlestyles', array(
+					'spftestimonial_field_typography_googlestyles',
+					array(
 						'100'       => 'Thin 100',
 						'100italic' => 'Thin 100 Italic',
 						'200'       => 'Extra-Light 200',
@@ -422,7 +491,9 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 				$webfonts = apply_filters( 'spftestimonial_field_typography_webfonts', $webfonts );
 
 				wp_localize_script(
-					'spftestimonial', 'spftestimonial_typography_json', array(
+					'spftestimonial',
+					'spftestimonial_typography_json',
+					array(
 						'webfonts'      => $webfonts,
 						'defaultstyles' => $defaultstyles,
 						'googlestyles'  => $googlestyles,
@@ -483,7 +554,7 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_typography' ) ) {
 
 			}
 
-			return false;
+				return false;
 
 		}
 

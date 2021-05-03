@@ -4,7 +4,7 @@
 //
 // Set a unique slug-like ID.
 //
-$prefix = '_sp_testimonial_options';
+$prefix = 'sp_testimonial_pro_options';
 
 //
 // Review text.
@@ -19,7 +19,8 @@ $text = sprintf(
 // Create a settings page.
 //
 SPFTESTIMONIAL::createOptions(
-	$prefix, array(
+	$prefix,
+	array(
 		'menu_title'       => __( 'Settings', 'testimonial-free' ),
 		'menu_parent'      => 'edit.php?post_type=spt_testimonial',
 		'menu_type'        => 'submenu', // menu, submenu, options, theme, etc.
@@ -30,30 +31,158 @@ SPFTESTIMONIAL::createOptions(
 		'show_search'      => false,
 		'show_footer'      => false,
 		'footer_credit'    => $text,
-		'framework_title'  => __( 'Testimonial Settings', 'testimonial-free' ),
+		'framework_title'  => __( 'Settings', 'testimonial-free' ),
+	)
+);
+
+
+//
+// Advanced Settings section.
+//
+SPFTESTIMONIAL::createSection(
+	$prefix,
+	array(
+		'name'   => 'advanced_settings',
+		'title'  => __( 'Advanced Settings', 'testimonial-free' ),
+		'icon'   => 'fa fa-cogs',
+		'fields' => array(
+			array(
+				'id'      => 'testimonial_data_remove',
+				'type'    => 'checkbox',
+				'title'   => __( 'Clean up Data on Deletion', 'testimonial-free' ),
+				'help'    => __( 'Delete all Testimonial data from the database on plugin deletion.', 'testimonial-free' ),
+				'default' => false,
+			),
+			array(
+				'id'         => 'tpro_dequeue_google_fonts',
+				'type'       => 'switcher',
+				'title'      => __( 'Google Fonts', 'testimonial-free' ),
+				// 'subtitle'   => __( 'Enqueue/dequeue google fonts.', 'testimonial-free' ),
+				'text_on'    => __( 'Enqueue', 'testimonial-free' ),
+				'text_off'   => __( 'Dequeue', 'testimonial-free' ),
+				'text_width' => 95,
+				'class'      => 'pro_switcher',
+				'attributes' => array( 'disabled' => 'disabled' ),
+				'default'    => false,
+			),
+			array(
+				'type'    => 'subheading',
+				'content' => __( 'Enqueue or Dequeue JS', 'testimonial-free' ),
+			),
+			array(
+				'id'         => 'tf_dequeue_slick_js',
+				'type'       => 'switcher',
+				'title'      => __( 'Slick JS', 'testimonial-free' ),
+				// 'subtitle'   => __( 'Enqueue/dequeue slick JS.', 'testimonial-free' ),
+				'text_on'    => __( 'Enqueue', 'testimonial-free' ),
+				'text_off'   => __( 'Dequeue', 'testimonial-free' ),
+				'text_width' => 95,
+				'default'    => true,
+			),
+			array(
+				'type'    => 'subheading',
+				'content' => __( 'Enqueue or Dequeue CSS', 'testimonial-free' ),
+			),
+			array(
+				'id'         => 'tf_dequeue_slick_css',
+				'type'       => 'switcher',
+				'title'      => __( 'Slick CSS', 'testimonial-free' ),
+				// 'subtitle'   => __( 'Enqueue/dequeue slick CSS.', 'testimonial-free' ),
+				'text_on'    => __( 'Enqueue', 'testimonial-free' ),
+				'text_off'   => __( 'Dequeue', 'testimonial-free' ),
+				'text_width' => 95,
+				'default'    => true,
+			),
+			array(
+				'id'         => 'tf_dequeue_fa_css',
+				'type'       => 'switcher',
+				'title'      => __( 'Font Awesome CSS', 'testimonial-free' ),
+				// 'subtitle'   => __( 'Enqueue/dequeue font awesome CSS.', 'testimonial-free' ),
+				'text_on'    => __( 'Enqueue', 'testimonial-free' ),
+				'text_off'   => __( 'Dequeue', 'testimonial-free' ),
+				'text_width' => 95,
+				'default'    => true,
+			),
+			/*
+			 array(
+				'id'         => 'tpro_dequeue_magnific_popup_css',
+				'type'       => 'switcher',
+				'title'      => __( 'Magnific Popup CSS', 'testimonial-free' ),
+				// 'subtitle'   => __( 'Enqueue/dequeue magnific popup CSS.', 'testimonial-free' ),
+				'text_on'    => __( 'Enqueue', 'testimonial-free' ),
+				'text_off'   => __( 'Dequeue', 'testimonial-free' ),
+				'text_width' => 95,
+				'default'    => true,
+			), */
+
+		),
 	)
 );
 
 //
-// Advanced section.
+// Menu Settings section.
 //
 SPFTESTIMONIAL::createSection(
-	$prefix, array(
-		'name'   => 'advanced_settings',
-		'title'  => __( 'Advanced', 'testimonial-free' ),
-		'icon'   => 'fa fa-cogs',
+	$prefix,
+	array(
+		'name'   => 'menu_settings',
+		'title'  => __( 'Menu Settings', 'testimonial-free' ),
+		'icon'   => 'fa fa-bars',
 
 		'fields' => array(
 			array(
-				'id'         => 'spt_enable_schema',
-				'type'       => 'switcher',
-				'title'      => __( 'Schema Markup', 'testimonial-free' ),
-				'subtitle'   => __( 'Enable/Disable schema markup.', 'testimonial-free' ),
-				'text_on'    => __( 'Enabled', 'testimonial-free' ),
-				'text_off'   => __( 'Disabled', 'testimonial-free' ),
-				'text_width' => '98',
-				'default'    => false,
+				'id'      => 'tpro_singular_name',
+				'type'    => 'text',
+				'title'   => __( 'Singular name', 'testimonial-free' ),
+				'default' => 'Testimonial',
 			),
+			array(
+				'id'      => 'tpro_plural_name',
+				'type'    => 'text',
+				'title'   => __( 'Plural name', 'testimonial-free' ),
+				'default' => 'Testimonials',
+			),
+
+		),
+	)
+);
+
+// Field: reCAPTCHA
+SPFTESTIMONIAL::createSection(
+	$prefix,
+	array(
+		'id'     => 'google_recaptcha',
+		'title'  => __( 'reCAPTCHA', 'testimonial-free' ),
+		'icon'   => 'fa fa-shield',
+		'fields' => array(
+
+			array(
+				'type'    => 'submessage',
+				'class'   => 'pro_only_field',
+				'style'   => 'info',
+				'content' => __(
+					'<a href="https://www.google.com/recaptcha" target="_blank">reCAPTCHA</a> is a free anti-spam service of Google that protects your website from spam and abuse. <a
+href="https://www.google.com/recaptcha/admin#list" target="_blank"> Get your API Keys</a>. <a target="_blank" href="https://shapedplugin.com/plugin/testimonial-pro/?ref=1"><b>(Available in Pro)</b></a>',
+					'testimonial-free'
+				),
+			),
+			array(
+				'id'         => 'captcha_site_key',
+				'type'       => 'text',
+				'class'      => 'pro_only_field',
+				'attributes' => array( 'disabled' => 'disabled' ),
+				'title'      => __( 'Site key', 'testimonial-free' ),
+				// 'subtitle' => __( 'Set Site key.', 'testimonial-free' ),
+			),
+			array(
+				'id'         => 'captcha_secret_key',
+				'type'       => 'text',
+				'class'      => 'pro_only_field',
+				'attributes' => array( 'disabled' => 'disabled' ),
+				'title'      => __( 'Secret key', 'testimonial-free' ),
+				// 'subtitle' => __( 'Set Secret key.', 'testimonial-free' ),
+			),
+
 		),
 	)
 );
@@ -62,7 +191,8 @@ SPFTESTIMONIAL::createSection(
 // Custom CSS section.
 //
 SPFTESTIMONIAL::createSection(
-	$prefix, array(
+	$prefix,
+	array(
 		'name'   => 'custom_css_section',
 		'title'  => __( 'Custom CSS', 'testimonial-free' ),
 		'icon'   => 'fa fa-css3',
@@ -76,7 +206,6 @@ SPFTESTIMONIAL::createSection(
 					'mode'  => 'css',
 				),
 				'title'    => __( 'Custom CSS', 'testimonial-free' ),
-				'subtitle' => __( 'Write your custom CSS.', 'testimonial-free' ),
 			),
 		),
 	)

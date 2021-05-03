@@ -521,6 +521,12 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Options' ) ) {
 			$class         = ( $this->args['class'] ) ? ' ' . $this->args['class'] : '';
 
 			do_action( 'spftestimonial_options_before' );
+			$notice_class = ( ! empty( $this->notice ) ) ? ' spftestimonial-form-show' : '';
+			$notice_text  = ( ! empty( $this->notice ) ) ? $this->notice : '';
+
+			echo '<div class="spftestimonial-form-result spftestimonial-form-success' . $notice_class . '">' . $notice_text . '</div>';
+
+			// echo ( $this->args['show_form_warning'] ) ? '<div class="spftestimonial-form-result spftestimonial-form-warning">' . esc_html__( 'Settings have changed, you should save them!', 'testimonial-free' ) . '</div>' : '';
 
 			echo '<div class="spftestimonial spftestimonial-options' . $theme . $class . $wrapper_class . '" data-slug="' . $this->args['menu_slug'] . '" data-unique="' . $this->unique . '">';
 
@@ -536,17 +542,11 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Options' ) ) {
 			echo '<div class="spftestimonial-header-inner">';
 
 			echo '<div class="spftestimonial-header-left">';
-			echo '<h1>' . $this->args['framework_title'] . '</h1>';
+			// echo '<h1>' . $this->args['framework_title'] . '</h1>';
+			echo '<h1> <img src="' . SP_TFREE_URL . '/admin/assets/images/icon.svg" alt="">' . $this->args['framework_title'] . '</h1>';
 			echo '</div>';
 
 			echo '<div class="spftestimonial-header-right">';
-
-			$notice_class = ( ! empty( $this->notice ) ) ? ' spftestimonial-form-show' : '';
-			$notice_text  = ( ! empty( $this->notice ) ) ? $this->notice : '';
-
-			echo '<div class="spftestimonial-form-result spftestimonial-form-success' . $notice_class . '">' . $notice_text . '</div>';
-
-			echo ( $this->args['show_form_warning'] ) ? '<div class="spftestimonial-form-result spftestimonial-form-warning">' . esc_html__( 'Settings have changed, you should save them!', 'testimonial-free' ) . '</div>' : '';
 
 			echo ( $has_nav && $this->args['show_all_options'] ) ? '<div class="spftestimonial-expand-all" title="' . esc_html__( 'show all options', 'testimonial-free' ) . '"><i class="fa fa-outdent"></i></div>' : '';
 

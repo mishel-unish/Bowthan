@@ -64,7 +64,7 @@ if ( ! class_exists( 'SPFTESTIMONIAL_Field_column' ) ) {
 
 				echo '<div class="spftestimonial--input">';
 				echo ( ! empty( $args[ $property . '_icon' ] ) ) ? '<span class="spftestimonial--label spftestimonial--label-icon">' . $args[ $property . '_icon' ] . '</span>' : '';
-				echo '<input type="text" name="' . $this->field_name( '[' . $property . ']' ) . '" value="' . $value[ $property ] . '"' . $placeholder . ' class="spftestimonial-number" />';
+				echo '<input type="number" name="' . $this->field_name( '[' . $property . ']' ) . '" value="' . $value[ $property ] . '"' . $placeholder . ' class="spftestimonial-number" />';
 				echo '</div>';
 
 			}

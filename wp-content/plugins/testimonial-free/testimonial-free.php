@@ -10,9 +10,9 @@
  * @package           Testimonial
  *
  * Plugin Name:     Testimonial
- * Plugin URI:      https://shapedplugin.com/plugin/testimonial-pro/
+ * Plugin URI:      https://shapedplugin.com/plugin/testimonial-pro/?ref=1
  * Description:     Most Customizable and Powerful Testimonials Showcase Plugin for WordPress that allows you to manage and display Testimonials or Reviews on any page or widget.
- * Version:         2.2.8
+ * Version:         2.2.11
  * Author:          ShapedPlugin
  * Author URI:      https://shapedplugin.com/
  * Text Domain:     testimonial-free
@@ -23,36 +23,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if ( ! function_exists( 'activate_testimonial' ) ) {
-	/**
-	 * The code that runs during plugin activation.
-	 * This action is documented in includes/class-testimonial-activator.php
-	 */
-	function activate_testimonial() {
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-testimonial-activator.php';
-		Testimonial_Activator::activate();
+/**
+ * Pro version check.
+ *
+ * @return boolean
+ */
+function is_testimonial_pro() {
+	include_once ABSPATH . 'wp-admin/includes/plugin.php';
+	if ( ! ( is_plugin_active( 'testimonial-pro/testimonial-pro.php' ) || is_plugin_active_for_network( 'testimonial-pro/testimonial-pro.php' ) ) ) {
+		return true;
 	}
 }
 
-if ( ! function_exists( 'deactivate_testimonial' ) ) {
-	/**
-	 * The code that runs during plugin deactivation.
-	 * This action is documented in includes/class-testimonial-deactivator.php
-	 */
-	function deactivate_testimonial() {
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-testimonial-deactivator.php';
-		Testimonial_Deactivator::deactivate();
-	}
+if ( is_testimonial_pro() ) {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-testimonial-updates.php';
+	require_once plugin_dir_path( __FILE__ ) . 'admin/views/notices/review.php';
+	require_once plugin_dir_path( __FILE__ ) . 'admin/views/framework/classes/setup.class.php';
+	require_once plugin_dir_path( __FILE__ ) . 'admin/views/testimonial-settings.php';
+	require_once plugin_dir_path( __FILE__ ) . 'admin/views/testimonial-metaboxs.php';
+	require_once plugin_dir_path( __FILE__ ) . 'admin/views/testimonial-form.php';
 }
-
-register_activation_hook( __FILE__, 'activate_testimonial' );
-register_deactivation_hook( __FILE__, 'deactivate_testimonial' );
-
-require_once plugin_dir_path( __FILE__ ) . 'includes/class-testimonial-updates.php';
-require_once plugin_dir_path( __FILE__ ) . 'admin/views/notices/review.php';
-require_once plugin_dir_path( __FILE__ ) . 'admin/views/framework/classes/setup.class.php';
-require_once plugin_dir_path( __FILE__ ) . 'admin/views/testimonial-settings.php';
-require_once plugin_dir_path( __FILE__ ) . 'admin/views/testimonial-metaboxs.php';
 
 if ( ! class_exists( 'SP_Testimonial_FREE' ) ) {
 	/**
@@ -67,7 +57,7 @@ if ( ! class_exists( 'SP_Testimonial_FREE' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '2.2.8';
+		public $version = '2.2.11';
 
 		/**
 		 * @var SP_TFREE_Testimonial $shortcode
@@ -132,7 +122,7 @@ if ( ! class_exists( 'SP_Testimonial_FREE' ) ) {
 		 */
 		function init_filters() {
 			add_filter( 'plugin_action_links', array( $this, 'add_plugin_action_links' ), 10, 2 );
-			add_filter( 'manage_sp_tfree_shortcodes_posts_columns', array( $this, 'add_shortcode_column' ) );
+			add_filter( 'manage_spt_shortcodes_posts_columns', array( $this, 'add_shortcode_column' ) );
 			add_filter( 'plugin_row_meta', array( $this, 'after_testimonial_free_row_meta' ), 10, 4 );
 			add_filter( 'manage_spt_testimonial_posts_columns', array( $this, 'add_testimonial_column' ) );
 		}
@@ -144,7 +134,7 @@ if ( ! class_exists( 'SP_Testimonial_FREE' ) ) {
 		 */
 		function init_actions() {
 			add_action( 'plugins_loaded', array( $this, 'load_text_domain' ) );
-			add_action( 'manage_sp_tfree_shortcodes_posts_custom_column', array( $this, 'add_shortcode_form' ), 10, 2 );
+			add_action( 'manage_spt_shortcodes_posts_custom_column', array( $this, 'add_shortcode_form' ), 10, 2 );
 			add_action( 'manage_spt_testimonial_posts_custom_column', array( $this, 'add_testimonial_extra_column' ), 10, 2 );
 			add_action( 'activated_plugin', array( $this, 'redirect_help_page' ) );
 		}
@@ -196,11 +186,14 @@ if ( ! class_exists( 'SP_Testimonial_FREE' ) ) {
 		public function add_plugin_action_links( $links, $file ) {
 
 			if ( SP_TFREE_BASENAME === $file ) {
-				$ui_links = sprintf( '<a href="%s">%s</a>', admin_url( 'edit.php?post_type=sp_tfree_shortcodes' ), __( 'Shortcode Generator', 'testimonial-free' ) );
+				$ui_links        = array(
+					sprintf( '<a href="%s">%s</a>', admin_url( 'post-new.php?post_type=spt_testimonial' ), __( 'Add Testimonial', 'testimonial-free' ) ),
+					sprintf( '<a href="%s">%s</a>', admin_url( 'edit.php?post_type=spt_shortcodes' ), __( 'Manage Views', 'testimonial-free' ) ),
+				);
+				$links['go_pro'] = sprintf( '<a href="%s" style="%s">%s</a>', 'https://shapedplugin.com/plugin/testimonial-pro/?ref=1', 'color:#35b747;font-weight:bold', __( 'Go Pro!', 'testimonial-free' ) );
 
-				array_unshift( $links, $ui_links );
+				return array_merge( $ui_links, $links );
 
-				$links['go_pro'] = sprintf( '<a href="%s" style="%s">%s</a>', 'https://shapedplugin.com/plugin/testimonial-pro', 'color:#1dab87;font-weight:bold', __( 'Go Premium!', 'testimonial-free' ) );
 			}
 
 			return $links;
@@ -218,7 +211,7 @@ if ( ! class_exists( 'SP_Testimonial_FREE' ) ) {
 		 */
 		function after_testimonial_free_row_meta( $plugin_meta, $file ) {
 			if ( SP_TFREE_BASENAME === $file ) {
-				$plugin_meta[] = '<a href="https://shapedplugin.com/demo/testimonial-pro/" target="_blank">' . __( 'Live Demo', 'testimonial-free' ) . '</a>';
+				$plugin_meta[] = '<a href="https://demo.shapedplugin.com/testimonial/" target="_blank">' . __( 'Live Demo', 'testimonial-free' ) . '</a>';
 			}
 
 			return $plugin_meta;
@@ -300,7 +293,8 @@ if ( ! class_exists( 'SP_Testimonial_FREE' ) ) {
 			switch ( $column ) {
 
 				case 'shortcode':
-					$column_field = '<input style="width: 270px;padding: 6px;" type="text" onClick="this.select();" readonly="readonly" value="[sp_testimonial ' . 'id=&quot;' . $post_id . '&quot;' . ']"/>';
+					$column_field = '<input class="sp_tfree_input" style="width: 230px;padding: 4px 8px;" type="text" readonly="readonly" value="[sp_testimonial ' . 'id=&quot;' . $post_id . '&quot;' . ']"/>
+					<div class="sptpro-after-copy-text"><i class="fa fa-check-circle"></i> Shortcode Copied to Clipboard! </div>';
 					echo $column_field;
 					break;
 				default:
@@ -370,9 +364,11 @@ if ( ! class_exists( 'SP_Testimonial_FREE' ) ) {
 					break;
 				case 'image':
 					add_image_size( 'sp_tfree_client_small_img', 50, 50, true );
-					$testimonial_client_image = get_the_post_thumbnail( get_the_ID(), 'sp_tfree_client_small_img' );
-					if ( $testimonial_client_image !== '' ) {
-						echo $testimonial_client_image;
+
+					$thumb_id                 = get_post_thumbnail_id( $post_id );
+					$testimonial_client_image = wp_get_attachment_image_src( $thumb_id, 'sp_tfree_client_small_img' );
+					if ( $testimonial_client_image !== '' && is_array( $testimonial_client_image ) ) {
+						echo '<img  src="' . $testimonial_client_image[0] . '" width="' . $testimonial_client_image[1] . '"  height="' . $testimonial_client_image[2] . '"/>';
 					} else {
 						echo '<span aria-hidden="true">—</span>';
 					}
@@ -419,5 +415,7 @@ function sp_testimonial_free() {
 	return SP_Testimonial_FREE::instance();
 }
 
-// sp_testimonial_free instance.
-sp_testimonial_free();
+if ( is_testimonial_pro() ) {
+	// sp_testimonial_free instance.
+	sp_testimonial_free();
+}
